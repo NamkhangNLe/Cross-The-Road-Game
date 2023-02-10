@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="start">GO!</string>
+    <string name="title">Cross the Kitchen: Remy\'s Adventure</string>
+    <string name="charSelect">Choose Your Character!</string>
+    <string name="difSelect">Choose Your Difficulty!</string>
+    <string name="nameSelect">Enter Your Name:</string>
+    <string name="easy">Easy</string>
+    <string name="med">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="livesCounter">Lives: </string>
+</resources>
