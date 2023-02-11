@@ -78,7 +78,7 @@
         android:layout_marginTop="26dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/char_1" />
+        app:srcCompat="@drawable/mouse" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -88,7 +88,7 @@
         android:layout_marginTop="26dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/char_2" />
+        app:srcCompat="@drawable/rat" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -98,7 +98,7 @@
         android:layout_marginTop="26dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/char_3" />
+        app:srcCompat="@drawable/remy" />
 
     <RadioGroup
         android:id="@+id/charRadioGroup"

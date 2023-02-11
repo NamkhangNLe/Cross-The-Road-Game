@@ -45,11 +45,11 @@ public class MainActivity4 extends AppCompatActivity {
         ImageView characterSprite = (ImageView) findViewById(R.id.charSprite);
         Context context = getApplicationContext();
         if (character == "char1") {
-            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.char_1, null));
+            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.mouse, null));
         } else if (character == "char2") {
-            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.char_2, null));
+            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.rat, null));
         } else {
-            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.char_3, null));
+            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.remy, null));
         }
     }
 }
