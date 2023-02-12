@@ -26,9 +26,9 @@ public class MainActivity4 extends AppCompatActivity {
         String name = prev.getStringExtra("name");
         String difficulty = prev.getStringExtra("difficulty");
         String lives;
-        if (difficulty == "Easy") {
+        if (difficulty.equals("Easy")) {
             lives = "5";
-        } else if (difficulty == "Medium") {
+        } else if (difficulty.equals("Medium")) {
             lives = "3";
         } else {
             lives = "1";
@@ -44,9 +44,9 @@ public class MainActivity4 extends AppCompatActivity {
         //Display character
         ImageView characterSprite = (ImageView) findViewById(R.id.charSprite);
         Context context = getApplicationContext();
-        if (character == "char1") {
+        if (character.equals("char1")) {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.mouse, null));
-        } else if (character == "char2") {
+        } else if (character.equals("char2")) {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.rat, null));
         } else {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.remy, null));
