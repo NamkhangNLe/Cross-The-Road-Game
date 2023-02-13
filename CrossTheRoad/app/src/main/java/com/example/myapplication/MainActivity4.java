@@ -1,12 +1,10 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,11 +43,14 @@ public class MainActivity4 extends AppCompatActivity {
         ImageView characterSprite = (ImageView) findViewById(R.id.charSprite);
         Context context = getApplicationContext();
         if (character.equals("char1")) {
-            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.mouse, null));
+            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
+                    R.drawable.mouse, null));
         } else if (character.equals("char2")) {
-            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.rat, null));
+            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
+                    R.drawable.rat, null));
         } else {
-            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.remy, null));
+            characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
+                    R.drawable.remy, null));
         }
     }
 }
