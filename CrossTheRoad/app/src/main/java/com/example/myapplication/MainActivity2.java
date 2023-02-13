@@ -17,8 +17,8 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
     }
 
-    String difficulty;
-    String character;
+    private String difficulty;
+    private String character;
 
     public void nameSelect(View view) {
         //For errors
