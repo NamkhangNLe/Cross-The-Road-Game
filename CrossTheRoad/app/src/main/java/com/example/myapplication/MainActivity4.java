@@ -1,16 +1,18 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity4 extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
+public class MainActivity4 extends AppCompatActivity {
+    /**
+     * on Create.
+     * @param savedInstanceState savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,9 @@ public class MainActivity4 extends AppCompatActivity {
         setUp();
     }
 
+    /**
+     * set Up.
+     */
     private void setUp() {
         //Retrieve old variables
         Intent prev = getIntent();
@@ -33,15 +38,15 @@ public class MainActivity4 extends AppCompatActivity {
         }
         String character = prev.getStringExtra("character");
         //Display names and lives
-        TextView nameDisplay = (TextView) findViewById(R.id.nameDisplay);
-        TextView livesDisplay = (TextView) findViewById(R.id.livesDisplay);
-        TextView difficultyDisplay = (TextView) findViewById(R.id.difficultyDisplay);
+        TextView nameDisplay = findViewById(R.id.nameDisplay);
+        TextView livesDisplay = findViewById(R.id.livesDisplay);
+        TextView difficultyDisplay = findViewById(R.id.difficultyDisplay);
         nameDisplay.setText(name);
         livesDisplay.setText(lives);
         difficultyDisplay.setText(difficulty);
         //Display character
-        ImageView characterSprite = (ImageView) findViewById(R.id.charSprite);
-        Context context = getApplicationContext();
+        ImageView characterSprite = findViewById(R.id.charSprite);
+        getApplicationContext();
         if (character.equals("char1")) {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
                     R.drawable.mouse, null));

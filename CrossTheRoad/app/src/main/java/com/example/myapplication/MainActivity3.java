@@ -10,23 +10,31 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class MainActivity3 extends AppCompatActivity {
+import java.util.Objects;
 
+public class MainActivity3 extends AppCompatActivity {
+    /**
+     * onCreate.
+     * @param savedInstanceState savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
     }
 
-    private String name;
+    /**
+     * start Game.
+     * @param view view
+     */
     public void startGame(View view) {
         //errors again
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
         //get inputted text and check if its valid
-        TextInputLayout nameInput = (TextInputLayout) findViewById(R.id.nameInput);
-        name = nameInput.getEditText().getText().toString();
+        TextInputLayout nameInput = findViewById(R.id.nameInput);
+        String name = Objects.requireNonNull(nameInput.getEditText()).getText().toString();
 
         boolean isNotValid = (name.trim().isEmpty());
         if (isNotValid) {

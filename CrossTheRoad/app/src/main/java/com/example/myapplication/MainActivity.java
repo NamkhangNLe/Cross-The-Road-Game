@@ -7,16 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-
+    /**
+     * This function happens when the activity begins, on setup
+     * @param savedInstanceState savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //This function happens when the activity begins, on setup
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * This is a function which begins another activity
+     * @param view view
+     */
     public void charSelect(View view) {
-        //This is a function which begins another activity
         Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
     }
