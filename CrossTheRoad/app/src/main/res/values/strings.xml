@@ -10,4 +10,8 @@
     <string name="med">Medium</string>
     <string name="hard">Hard</string>
     <string name="livesCounter">Lives: </string>
+    <string name="UP">Up</string>
+    <string name="DOWN">Down</string>
+    <string name="RIGHT">Right</string>
+    <string name="LEFT">Left</string>
 </resources>
