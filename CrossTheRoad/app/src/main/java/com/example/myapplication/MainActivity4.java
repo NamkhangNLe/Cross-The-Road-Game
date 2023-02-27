@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -64,6 +65,9 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     public void moveUp(View view) {
+        //Rotate the mouse.
+        characterSprite.setRotation(0);
+
         if (mouse.getyPos() == 11) {
             return;
         }
@@ -71,7 +75,11 @@ public class MainActivity4 extends AppCompatActivity {
         characterSprite.setY(characterSprite.getY() - move);
         mouse.setyPos(mouse.getyPos() + 1);
     }
+
     public void moveDown(View view) {
+        //Rotate the mouse.
+        characterSprite.setRotation(180);
+
         if (mouse.getyPos() == 0) {
             return;
         }
@@ -80,6 +88,9 @@ public class MainActivity4 extends AppCompatActivity {
         mouse.setyPos(mouse.getyPos() - 1);
     }
     public void moveLeft(View view) {
+        //Rotate the mouse.
+        characterSprite.setRotation(-90);
+
         if (mouse.getxPos() == 0) {
             return;
         }
@@ -88,6 +99,9 @@ public class MainActivity4 extends AppCompatActivity {
         mouse.setxPos(mouse.getxPos() - 1);
     }
     public void moveRight(View view) {
+        //Rotate the mouse.
+        characterSprite.setRotation(90);
+
         float move = characterSprite.getHeight();
         if (mouse.getxPos() == 9) {
             return;
