@@ -71,7 +71,14 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveUp(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(0);
-
+        if (mouse.getyPos() == 6
+                || mouse.getyPos() == 7
+                || mouse.getyPos() == 8
+                || mouse.getyPos() == 9) {
+            mouse.removeLife();
+            TextView livesDisplay = findViewById(R.id.livesDisplay);
+            livesDisplay.setText(Integer.toString(mouse.getLives()));
+        }
         if (mouse.getyPos() == 11) {
             return;
         }

@@ -87,6 +87,7 @@ public class Tests {
         testPlayer.moveLeft();
         assertEquals(testPlayer.getxPos(), 6);
     }
+
     /**
      * @author Namkhang Le
      * Ensures that when the difficulty is selected to be hard that it represents our selected integer
@@ -97,5 +98,18 @@ public class Tests {
         Player testPlayer = new Player();
         GameInstance testInstance = new GameInstance(testPlayer, "Hard");
         assertEquals(testInstance.getDifficultyNum(), 3);
+    }
+
+    /**
+     * @author Namkhang Le
+     * Ensures that the player cannot move off the screen upward.
+     */
+    @Test
+    public void cannotExitScreenUp() {
+        Player testPlayer = new Player();
+        for (int i = 0; i < 20; i++) {
+            testPlayer.moveUp();
+        }
+        assertEquals(testPlayer.getyPos(), 11);
     }
 }
