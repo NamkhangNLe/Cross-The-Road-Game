@@ -77,7 +77,7 @@ public class MainActivity4 extends AppCompatActivity {
         }
         float move = characterSprite.getHeight();
         characterSprite.setY(characterSprite.getY() - move);
-        mouse.setyPos(mouse.getyPos() + 1);
+        mouse.moveUp();
     }
 
     public void moveDown(View view) {
@@ -89,7 +89,7 @@ public class MainActivity4 extends AppCompatActivity {
         }
         float move = characterSprite.getHeight();
         characterSprite.setY(characterSprite.getY() + move);
-        mouse.setyPos(mouse.getyPos() - 1);
+        mouse.moveDown();
     }
     public void moveLeft(View view) {
         //Rotate the mouse.
@@ -100,7 +100,7 @@ public class MainActivity4 extends AppCompatActivity {
         }
         float move = characterSprite.getHeight();
         characterSprite.setX(characterSprite.getX() - move);
-        mouse.setxPos(mouse.getxPos() - 1);
+        mouse.moveLeft();
     }
     public void moveRight(View view) {
         //Rotate the mouse.
@@ -111,6 +111,6 @@ public class MainActivity4 extends AppCompatActivity {
             return;
         }
         characterSprite.setX((characterSprite.getX() + move));
-        mouse.setxPos(mouse.getxPos() + 1);
+        mouse.moveRight();
     }
 }

@@ -58,4 +58,34 @@ public class Tests {
         GameInstance testInstance = new GameInstance(testPlayer, "Medium");
         assertEquals(testInstance.getDifficultyNum(), 2);
     }
+
+    /**
+     * @author Keller Smith
+     * Ensures that the player cannot move off the screen to the right.
+     */
+    @Test
+    public void cannotExitScreenRight() {
+        Player testPlayer = new Player();
+        for (int i = 0; i < 20; i++) {
+            testPlayer.moveRight();
+        }
+        assertEquals(testPlayer.getxPos(), 9);
+    }
+    /**
+     * @aythor Keller Smith
+     * Ensures that the player can move left and right.
+     */
+    @Test
+    public  void moveLeftRight() {
+        Player testPlayer = new Player();
+        testPlayer.moveRight();
+        testPlayer.moveRight();
+        testPlayer.moveRight();
+        testPlayer.moveRight();
+        testPlayer.moveLeft();
+        testPlayer.moveLeft();
+        testPlayer.moveLeft();
+        assertEquals(testPlayer.getxPos(), 6);
+    }
+
 }
