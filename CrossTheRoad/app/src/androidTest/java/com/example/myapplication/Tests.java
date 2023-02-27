@@ -87,5 +87,15 @@ public class Tests {
         testPlayer.moveLeft();
         assertEquals(testPlayer.getxPos(), 6);
     }
-
+    /**
+     * @author Namkhang Le
+     * Ensures that when the difficulty is selected to be hard that it represents our selected integer
+     * that represents hard.
+     */
+    @Test
+    public void difficultySetProperlyHard() {
+        Player testPlayer = new Player();
+        GameInstance testInstance = new GameInstance(testPlayer, "Hard");
+        assertEquals(testInstance.getDifficultyNum(), 3);
+    }
 }
