@@ -112,4 +112,52 @@ public class Tests {
         }
         assertEquals(testPlayer.getyPos(), 11);
     }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that the player cannot move off the screen to the left.
+     */
+    @Test
+    public void cannotExitScreenLeft() {
+        Player testPlayer = new Player();
+        for (int i = 0; i < 20; i++) {
+            testPlayer.moveLeft();
+        }
+        assertEquals(testPlayer.getxPos(), 0)
+    }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that the player cannot move off the bottom of the screen.
+     */
+    @Test
+    public void cannotExitScreenDown() {
+        Player testPlayer = new Player();
+        for (int i = 0; i < 20; i++) {
+            testPlayer.moveDown();
+        }
+        assertEquals(testPlayer.getyPos(), 0)
+    }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that the player can move up, down, left, and right.
+     */
+    @Test
+    public void moveKonami() {
+        Player testPlayer = new Player();
+        testPlayer.moveUp();
+        testPlayer.moveDown();
+        testPlayer.moveUp();
+        testPlayer.moveDown();
+        testPlayer.moveLeft();
+        testPlayer.moveRight();
+        testPlayer.moveLeft();
+        testPlayer.moveRight();
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        assertEquals(testPlayer.getyPos(), 2)
+    }
+
 }
