@@ -6,11 +6,15 @@ public class Player {
     private int xPos;
     private int yPos;
 
-    public Player() {
+    public Player(int lives, String name) {
         xPos = 5;
         yPos = 0;
     }
 
+    public Player() {
+        xPos = 5;
+        yPos = 0;
+    }
     public int getyPos() {
         return yPos;
     }
@@ -38,4 +42,9 @@ public class Player {
     public void setName(String newName) {
         this.name = newName;
     }
+
+    public void removeLife(){
+        lives--;
+    }
+
 }

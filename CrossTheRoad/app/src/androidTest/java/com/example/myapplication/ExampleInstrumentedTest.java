@@ -26,6 +26,7 @@ public class ExampleInstrumentedTest {
 
 
     public void testHealthDifficulty() {
+        Player player = new Player();
 
     }
 
