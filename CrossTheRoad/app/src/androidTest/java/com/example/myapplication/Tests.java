@@ -74,7 +74,7 @@ public class Tests {
         assertEquals(testPlayer.getxPos(), 9);
     }
     /**
-     * @aythor Keller Smith
+     * @author Keller Smith
      * Ensures that the player can move left and right.
      */
     @Test
@@ -115,7 +115,6 @@ public class Tests {
         assertEquals(testPlayer.getyPos(), 11);
     }
 
-
     /**
      * @author Rushda Umrani
      * Ensures that the player can move up and down.
@@ -148,4 +147,39 @@ public class Tests {
         }
         assertEquals(testPlayer.getyPos(), 0);
     }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that the player can move up, down, left, and right.
+     */
+    @Test
+    public void moveKonami() {
+        Player testPlayer = new Player();
+        testPlayer.moveUp();
+        testPlayer.moveDown();
+        testPlayer.moveUp();
+        testPlayer.moveDown();
+        testPlayer.moveLeft();
+        testPlayer.moveRight();
+        testPlayer.moveLeft();
+        testPlayer.moveRight();
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        assertEquals(testPlayer.getyPos(), 2)
+    }
+  
+     /**
+     * @author Amanda Janusz
+     * Checks that the player cannot move off the screen to the left.
+     */
+    @Test
+    public void cannotExitScreenLeft() {
+        Player testPlayer = new Player();
+        for (int i = 0; i < 20; i++) {
+            testPlayer.moveLeft();
+        }
+        assertEquals(testPlayer.getxPos(), 0)
+    }
+
 }
