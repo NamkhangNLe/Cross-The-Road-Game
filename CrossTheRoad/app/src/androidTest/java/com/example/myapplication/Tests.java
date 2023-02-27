@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.widget.ImageView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -111,5 +113,39 @@ public class Tests {
             testPlayer.moveUp();
         }
         assertEquals(testPlayer.getyPos(), 11);
+    }
+
+
+    /**
+     * @author Rushda Umrani
+     * Ensures that the player can move up and down.
+     */
+    @Test
+    public void testUpAndDown() {
+        Player testPlayer = new Player();
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+        testPlayer.moveDown();
+        testPlayer.moveDown();
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+        testPlayer.moveDown();
+        testPlayer.moveDown();
+        testPlayer.moveDown();
+        assertEquals(testPlayer.getyPos(), 0);
+    }
+
+    /**
+     * @author Rushda Umrani
+     * Ensures that player cannot move off the screen downward.
+     */
+    @Test
+    public void cannotExitScreenDown(){
+        Player testPlayer = new Player();
+        for (int i = 0; i < 20; i++) {
+            testPlayer.moveDown();
+        }
+        assertEquals(testPlayer.getyPos(), 0);
     }
 }
