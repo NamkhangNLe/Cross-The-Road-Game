@@ -12,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 public class MainActivity4 extends AppCompatActivity {
+    private int lives;
     private Player mouse = new Player();
     private ImageView characterSprite;
     /**
      * on Create.
      * @param savedInstanceState savedInstanceState
      */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +33,17 @@ public class MainActivity4 extends AppCompatActivity {
     private void setUp() {
         //Retrieve old variables
         Intent prev = getIntent();
+
         String name = prev.getStringExtra("name");
         String difficulty = prev.getStringExtra("difficulty");
-        String lives;
+        mouse.setName(name);
+        GameInstance currentGame = new GameInstance(mouse, difficulty);
         if (difficulty.equals("Easy")) {
-            lives = "5";
+            mouse.setLives(5);
         } else if (difficulty.equals("Medium")) {
-            lives = "3";
+            mouse.setLives(3);
         } else {
-            lives = "1";
+            mouse.setLives(1);
         }
         String character = prev.getStringExtra("character");
         //Display names and lives
@@ -47,8 +51,8 @@ public class MainActivity4 extends AppCompatActivity {
         TextView livesDisplay = findViewById(R.id.livesDisplay);
         TextView difficultyDisplay = findViewById(R.id.difficultyDisplay);
         nameDisplay.setText(name);
-        livesDisplay.setText(lives);
-        difficultyDisplay.setText(difficulty);
+        livesDisplay.setText(Integer.toString(mouse.getLives()));
+        difficultyDisplay.setText(currentGame.getDifficulty());
         //Display character
         characterSprite = findViewById(R.id.charSprite);
         getApplicationContext();
