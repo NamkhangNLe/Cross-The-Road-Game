@@ -166,7 +166,7 @@ public class Tests {
         testPlayer.moveUp();
         testPlayer.moveUp();
 
-        assertEquals(testPlayer.getyPos(), 2)
+        assertEquals(testPlayer.getyPos(), 2);
     }
   
      /**
@@ -179,7 +179,7 @@ public class Tests {
         for (int i = 0; i < 20; i++) {
             testPlayer.moveLeft();
         }
-        assertEquals(testPlayer.getxPos(), 0)
+        assertEquals(testPlayer.getxPos(), 0);
     }
 
 }
