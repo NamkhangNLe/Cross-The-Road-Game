@@ -25,10 +25,6 @@ public class Player {
     public void moveUp() {
         if (yPos != 11) {
             yPos = yPos + 1;
-            if (!rowHasBeenTraveledOn[yPos]) {
-                score += 10;
-                rowHasBeenTraveledOn[yPos] = true;
-            }
         }
     }
     public void moveDown() {
@@ -84,5 +80,13 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public boolean[] getRowHasBeenTraveledOn() {
+        return rowHasBeenTraveledOn;
+    }
+
+    public void setRowHasBeenTraveledOn(boolean hasBeenTraveledOn) {
+        this.rowHasBeenTraveledOn = rowHasBeenTraveledOn;
     }
 }

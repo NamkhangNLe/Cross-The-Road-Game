@@ -85,12 +85,17 @@ public class MainActivity4 extends AppCompatActivity {
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
         }
-        if (mouse.getyPos() == 11) {
-            return;
+        if (mouse.getyPos() != 11) {
+            float move = characterSprite.getHeight();
+            characterSprite.setY(characterSprite.getY() - move);
+            mouse.moveUp();
         }
-        float move = characterSprite.getHeight();
-        characterSprite.setY(characterSprite.getY() - move);
-        mouse.moveUp();
+        if (!mouse.getRowHasBeenTraveledOn()[mouse.getyPos()]) {
+            mouse.setScore(mouse.getScore() + 10);
+            mouse.setRowHasBeenTraveledOn(mouse.getRowHasBeenTraveledOn()[mouse.getyPos()] = true);
+            TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+            scoreDisplay.setText(Integer.toString(mouse.getScore()));
+        }
     }
 
     public void moveDown(View view) {
