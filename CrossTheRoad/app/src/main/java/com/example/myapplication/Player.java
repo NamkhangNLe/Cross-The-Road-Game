@@ -5,8 +5,11 @@ public class Player {
     private int lives;
     private int xPos;
     private int yPos;
+    private int score;
 
     public Player(int lives, String name) {
+        this.lives = lives;
+        this.name = name;
         xPos = 5;
         yPos = 0;
     }
@@ -16,30 +19,22 @@ public class Player {
         yPos = 0;
     }
     public void moveUp() {
-        if (yPos == 11) {
-            return;
-        } else {
+        if (yPos != 11) {
             yPos = yPos + 1;
         }
     }
     public void moveDown() {
-        if (yPos == 0) {
-            return;
-        } else {
+        if (yPos != 0) {
             yPos = yPos - 1;
         }
     }
     public void moveLeft() {
-        if (xPos == 0) {
-            return;
-        } else {
+        if (xPos != 0) {
             xPos = xPos - 1;
         }
     }
     public void moveRight() {
-        if (xPos == 9) {
-            return;
-        } else {
+        if (xPos != 9) {
             xPos = xPos + 1;
         }
     }
@@ -75,4 +70,11 @@ public class Player {
         lives--;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
