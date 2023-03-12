@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/nameDisplay"
-        android:layout_width="380dp"
+        android:layout_width="240dp"
         android:layout_height="33dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
@@ -1425,6 +1425,29 @@
         tools:layout_editor_absoluteY="665dp">
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Score:"
+        android:textColor="@color/black"
+        android:textSize="10pt"
+        app:layout_constraintStart_toEndOf="@+id/nameDisplay"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreDisplay"
+        android:layout_width="62dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textSize="10pt"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

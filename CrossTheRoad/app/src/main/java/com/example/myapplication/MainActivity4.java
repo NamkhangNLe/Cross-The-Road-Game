@@ -52,6 +52,12 @@ public class MainActivity4 extends AppCompatActivity {
         nameDisplay.setText(name);
         livesDisplay.setText(Integer.toString(mouse.getLives()));
         difficultyDisplay.setText(currentGame.getDifficulty());
+
+        //Display score
+        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+        int score = mouse.getScore();
+        scoreDisplay.setText(Integer.toString(score));
+
         //Display character
         characterSprite = findViewById(R.id.charSprite);
         getApplicationContext();
