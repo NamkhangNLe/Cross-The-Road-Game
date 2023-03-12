@@ -6,21 +6,29 @@ public class Player {
     private int xPos;
     private int yPos;
     private int score;
+    private boolean[] rowHasBeenTraveledOn = new boolean[12];
+
 
     public Player(int lives, String name) {
         this.lives = lives;
         this.name = name;
         xPos = 5;
         yPos = 0;
+        rowHasBeenTraveledOn[0] = true;
     }
 
     public Player() {
         xPos = 5;
         yPos = 0;
+        rowHasBeenTraveledOn[0] = true;
     }
     public void moveUp() {
         if (yPos != 11) {
             yPos = yPos + 1;
+            if (!rowHasBeenTraveledOn[yPos]) {
+                score += 10;
+                rowHasBeenTraveledOn[yPos] = true;
+            }
         }
     }
     public void moveDown() {
