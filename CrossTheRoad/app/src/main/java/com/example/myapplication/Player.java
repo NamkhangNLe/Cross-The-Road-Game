@@ -5,8 +5,11 @@ public class Player {
     private int lives;
     private int xPos;
     private int yPos;
+    private int score;
 
     public Player(int lives, String name) {
+        this.lives = lives;
+        this.name = name;
         xPos = 5;
         yPos = 0;
     }
@@ -67,4 +70,11 @@ public class Player {
         lives--;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
