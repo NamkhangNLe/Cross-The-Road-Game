@@ -16,30 +16,22 @@ public class Player {
         yPos = 0;
     }
     public void moveUp() {
-        if (yPos == 11) {
-            return;
-        } else {
+        if (yPos != 11) {
             yPos = yPos + 1;
         }
     }
     public void moveDown() {
-        if (yPos == 0) {
-            return;
-        } else {
+        if (yPos != 0) {
             yPos = yPos - 1;
         }
     }
     public void moveLeft() {
-        if (xPos == 0) {
-            return;
-        } else {
+        if (xPos != 0) {
             xPos = xPos - 1;
         }
     }
     public void moveRight() {
-        if (xPos == 9) {
-            return;
-        } else {
+        if (xPos != 9) {
             xPos = xPos + 1;
         }
     }
