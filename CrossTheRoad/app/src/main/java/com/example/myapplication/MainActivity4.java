@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,6 +65,7 @@ public class MainActivity4 extends AppCompatActivity {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
                     R.drawable.remy, null));
         }
+        createCar(0, "rolling_pin", true);
     }
 
     public void moveUp(View view) {
@@ -117,5 +119,15 @@ public class MainActivity4 extends AppCompatActivity {
         }
         characterSprite.setX((characterSprite.getX() + move));
         mouse.moveRight();
+    }
+
+    public void createCar(int speed, String type, boolean direction) {
+        Vehicle curCar = new Vehicle(speed, type, direction, this);
+        ImageView iv = new ImageView(this);
+        ViewGroup view = (ViewGroup) findViewById(R.id.road_one);
+        if (type.equals("rolling_pin")) {
+            iv.setImageResource(R.drawable.rolling_pin);
+        }
+        view.addView(iv);
     }
 }

@@ -8,7 +8,6 @@ public class Player {
     private int score;
     private boolean[] rowHasBeenTraveledOn = new boolean[12];
 
-
     public Player(int lives, String name) {
         this.lives = lives;
         this.name = name;
