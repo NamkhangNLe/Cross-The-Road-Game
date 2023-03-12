@@ -11,6 +11,7 @@ public class Player {
     public Player(int lives, String name) {
         this.lives = lives;
         this.name = name;
+        this.score = 0;
         xPos = 5;
         yPos = 0;
         rowHasBeenTraveledOn[0] = true;
