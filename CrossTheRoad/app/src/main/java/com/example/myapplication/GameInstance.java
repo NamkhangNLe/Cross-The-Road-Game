@@ -8,12 +8,16 @@ public class GameInstance {
     public GameInstance(Player player, String difficulty){
         this.player = player;
         this.difficulty = difficulty;
-        if (difficulty.equals("Easy")) {
-            difficultyNum = 1;
-        } else if(difficulty.equals("Medium")) {
-            difficultyNum = 2;
-        } else if(difficulty.equals("Hard")) {
-            difficultyNum = 3;
+        switch (difficulty) {
+            case "Easy":
+                difficultyNum = 1;
+                break;
+            case "Medium":
+                difficultyNum = 2;
+                break;
+            case "Hard":
+                difficultyNum = 3;
+                break;
         }
     }
     public Player getPlayer() {
