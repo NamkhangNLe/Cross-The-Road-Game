@@ -1417,12 +1417,36 @@
         android:id="@+id/road_one"
         android:layout_width="440dp"
         android:layout_height="40dp"
-        android:layout_marginStart="0dp"
         android:layout_marginTop="540dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="665dp">
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/road_two"
+        android:layout_width="440dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/x5y2"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/road_three"
+        android:layout_width="440dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/x5y3"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/road_four"
+        android:layout_width="440dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/x5y4">
 
     </RelativeLayout>
 
