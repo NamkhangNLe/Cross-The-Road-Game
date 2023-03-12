@@ -91,7 +91,16 @@ public class MainActivity4 extends AppCompatActivity {
             mouse.moveUp();
         }
         if (!mouse.getRowHasBeenTraveledOn()[mouse.getyPos()]) {
-            mouse.setScore(mouse.getScore() + 10);
+            // Set's score depending on which row has been crossed
+            if (mouse.getyPos() == 1 || mouse.getyPos() == 3 || mouse.getyPos() == 5) {
+                mouse.setScore(mouse.getScore() + 10);
+            } else if (mouse.getyPos() == 2 || mouse.getyPos() == 4) {
+                mouse.setScore(mouse.getScore() + 20);
+            } else if (mouse.getyPos() >= 7 && mouse.getyPos() <= 10) {
+                mouse.setScore(mouse.getScore() + 50);
+            } else if (mouse.getyPos() == 11 && mouse.getxPos() % 2 == 1) {
+            mouse.setScore(mouse.getScore() + 100);
+            }
             mouse.setRowHasBeenTraveledOn(mouse.getRowHasBeenTraveledOn()[mouse.getyPos()] = true);
             TextView scoreDisplay = findViewById(R.id.scoreDisplay);
             scoreDisplay.setText(Integer.toString(mouse.getScore()));
