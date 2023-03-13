@@ -1415,10 +1415,57 @@
 
     <RelativeLayout
         android:id="@+id/road_one"
-        android:layout_width="440dp"
+        android:layout_width="520dp"
         android:layout_height="40dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="-80dp"
         android:layout_marginTop="540dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/road_two"
+        android:layout_width="520dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-80dp"
+        android:layout_marginTop="500dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="665dp">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/road_three"
+        android:layout_width="520dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-80dp"
+        android:layout_marginTop="460dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="665dp">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/road_four"
+        android:layout_width="520dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-80dp"
+        android:layout_marginTop="420dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="665dp">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/road_five"
+        android:layout_width="520dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-80dp"
+        android:layout_marginTop="380dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="77dp"

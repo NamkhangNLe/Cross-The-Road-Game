@@ -13,7 +13,7 @@ public class Vehicle{
     ImageView sprite;
     int id;
 
-    public Vehicle(int speed, String type, boolean direction, Context mcontext) {
+    public Vehicle(int speed, String type, boolean direction) {
         this.speed = speed;
         this.type = type;
         this.direction = direction;
