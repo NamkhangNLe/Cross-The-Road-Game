@@ -174,4 +174,29 @@ public class Tests {
         assertEquals(testPlayer.getxPos(), 0);
     }
 
+    /**
+     * @author Ben Steele
+     * Insures the vehicles speed is properly set
+     */
+    @Test
+    public void testVehicleSpeed() {
+        Vehicle testVehicle = new Vehicle(5,"1",true);
+        assertEquals(testVehicle.speed, 5);
+    }
+    /**
+     * @author Ben Steele
+     * Insures that the inputted vehicle type matches the input value
+     */
+    @Test
+    public void testVehicleType() {
+        Vehicle testVehicle = new Vehicle(5,"1",true);
+        assertEquals(testVehicle.type, "1");
+    }
+
+    @Test
+    public void testVehicleDirection() {
+        Vehicle testVehicle = new Vehicle(5,"1",true);
+        assertTrue(testVehicle.direction);
+    }
+
 }
