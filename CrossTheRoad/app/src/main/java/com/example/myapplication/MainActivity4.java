@@ -6,12 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.os.Handler;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import java.util.TimerTask;
+
 public class MainActivity4 extends AppCompatActivity {
     private int lives;
+    private boolean gameOver = false;
+    private Handler handler;
     private Player mouse = new Player();
     private ImageView characterSprite;
     /**
@@ -71,7 +79,7 @@ public class MainActivity4 extends AppCompatActivity {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
                     R.drawable.remy, null));
         }
-        createCar(0, "rolling_pin", true);
+        runVehicles();
     }
 
     public void moveUp(View view) {
@@ -141,13 +149,87 @@ public class MainActivity4 extends AppCompatActivity {
         mouse.moveRight();
     }
 
-    public void createCar(int speed, String type, boolean direction) {
-        Vehicle curCar = new Vehicle(speed, type, direction, this);
-        ImageView iv = new ImageView(this);
-        ViewGroup view = (ViewGroup) findViewById(R.id.road_one);
-        if (type.equals("rolling_pin")) {
-            iv.setImageResource(R.drawable.rolling_pin);
-        }
-        view.addView(iv);
+    public void runVehicles() {
+        handler = new Handler();
+        roadOne.run();
+        roadTwo.run();
+        roadThree.run();
+        roadFour.run();
+        roadFive.run();
     }
+    Runnable roadOne = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.road_one);
+            iv.setImageResource(R.drawable.test2);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation.setDuration(5000);
+            animation.start();
+            handler.postDelayed(roadOne, 2000);
+        }
+    };
+    Runnable roadTwo = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.road_two);
+            iv.setImageResource(R.drawable.test3);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation.setDuration(10000);
+            animation.start();
+            handler.postDelayed(roadTwo, 8000);
+        }
+    };
+    Runnable roadThree = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.road_three);
+            iv.setImageResource(R.drawable.test1);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation.setDuration(1000);
+            animation.start();
+            handler.postDelayed(roadThree, 2000);
+        }
+    };
+    Runnable roadFour = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.road_four);
+            iv.setImageResource(R.drawable.test2);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation.setDuration(6000);
+            animation.start();
+            handler.postDelayed(roadFour, 3000);
+        }
+    };
+    Runnable roadFive = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.road_five);
+            iv.setImageResource(R.drawable.test1);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation.setDuration(8000);
+            animation.start();
+            handler.postDelayed(roadFive, 4000);
+        }
+    };
 }
