@@ -90,6 +90,10 @@ public class MainActivity4 extends AppCompatActivity {
                 || mouse.getyPos() == 8
                 || mouse.getyPos() == 9) {
             mouse.removeLife();
+            if (mouse.getLives() < 0) {
+                mouse.setAlive(false);
+                gameOver();
+            }
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
         }
@@ -148,6 +152,12 @@ public class MainActivity4 extends AppCompatActivity {
         characterSprite.setX((characterSprite.getX() + move));
         mouse.moveRight();
     }
+
+    public void gameOver() {
+        gameOver = true;
+
+    }
+
 
     public void runVehicles() {
         handler = new Handler();

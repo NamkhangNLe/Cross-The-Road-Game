@@ -7,6 +7,8 @@ public class Player {
     private int yPos;
     private int score;
     private boolean[] rowHasBeenTraveledOn = new boolean[12];
+    private boolean alive;
+
 
     public Player(int lives, String name) {
         this.lives = lives;
@@ -15,6 +17,7 @@ public class Player {
         xPos = 5;
         yPos = 0;
         rowHasBeenTraveledOn[0] = true;
+        this.alive = true;
     }
 
     public Player() {
@@ -89,4 +92,8 @@ public class Player {
     public void setRowHasBeenTraveledOn(boolean hasBeenTraveledOn) {
         this.rowHasBeenTraveledOn = rowHasBeenTraveledOn;
     }
+
+    public void setAlive(boolean alive) { this.alive = alive; }
+    public boolean getAlive() { return this.alive; }
+
 }

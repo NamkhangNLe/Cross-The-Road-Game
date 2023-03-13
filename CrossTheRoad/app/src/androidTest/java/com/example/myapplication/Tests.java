@@ -176,7 +176,7 @@ public class Tests {
 
     /**
      * @author Ben Steele
-     * Insures the vehicles speed is properly set
+     * Ensures the vehicles speed is properly set
      */
     @Test
     public void testVehicleSpeed() {
@@ -185,7 +185,7 @@ public class Tests {
     }
     /**
      * @author Ben Steele
-     * Insures that the inputted vehicle type matches the input value
+     * Ensures that the inputted vehicle type matches the input value
      */
     @Test
     public void testVehicleType() {
@@ -193,10 +193,46 @@ public class Tests {
         assertEquals(testVehicle.type, "1");
     }
 
+    /**
+     * @author
+     * Checks that the vehicle direction is properly set
+     */
     @Test
     public void testVehicleDirection() {
         Vehicle testVehicle = new Vehicle(5,"1",true);
         assertTrue(testVehicle.direction);
+    }
+
+    /**
+     * @author
+     * checks to make sure that the player is set to "alive" at the beginning of the game
+     */
+    @Test
+    public void isAlive() {
+        Player testPlayer = new Player(5,"Frank");
+        assertTrue(testPlayer.getAlive());
+    }
+
+    /**
+     * @author
+     * checks to make sure that the players score starts at 0
+     */
+    @Test
+    public void checkScore() {
+        Player testPlayer = new Player(5,"Frank");
+        assertEquals(0,testPlayer.getScore());
+    }
+
+    /**
+     * @author
+     * Checks that the starting point is actually where the mouse starts at in the
+     * middle of the bottom of the screen
+     */
+    @Test
+    public void startingPoint() {
+        Player testPlayer = new Player();
+        assertEquals(testPlayer.getxPos(), 5);
+        assertEquals(testPlayer.getyPos(), 0);
     }
 
 }
