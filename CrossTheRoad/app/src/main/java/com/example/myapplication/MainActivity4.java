@@ -7,14 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.os.Handler;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
-
-import java.util.TimerTask;
 
 public class MainActivity4 extends AppCompatActivity {
     private int lives;
@@ -102,21 +98,9 @@ public class MainActivity4 extends AppCompatActivity {
             characterSprite.setY(characterSprite.getY() - move);
             mouse.moveUp();
         }
-        if (!mouse.getRowHasBeenTraveledOn()[mouse.getyPos()]) {
-            // Set's score depending on which row has been crossed
-            if (mouse.getyPos() == 1 || mouse.getyPos() == 3 || mouse.getyPos() == 5) {
-                mouse.setScore(mouse.getScore() + 10);
-            } else if (mouse.getyPos() == 2 || mouse.getyPos() == 4) {
-                mouse.setScore(mouse.getScore() + 20);
-            } else if (mouse.getyPos() >= 7 && mouse.getyPos() <= 10) {
-                mouse.setScore(mouse.getScore() + 50);
-            } else if (mouse.getyPos() == 11 && mouse.getxPos() % 2 == 1) {
-            mouse.setScore(mouse.getScore() + 100);
-            }
-            mouse.setRowHasBeenTraveledOn(mouse.getRowHasBeenTraveledOn()[mouse.getyPos()] = true);
-            TextView scoreDisplay = findViewById(R.id.scoreDisplay);
-            scoreDisplay.setText(Integer.toString(mouse.getScore()));
-        }
+
+        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+        scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
 
     public void moveDown(View view) {
@@ -167,7 +151,7 @@ public class MainActivity4 extends AppCompatActivity {
         roadFour.run();
         roadFive.run();
     }
-    Runnable roadOne = new Runnable() {
+    private Runnable roadOne = new Runnable() {
         @Override
         public void run() {
             ImageView iv = new ImageView(getApplicationContext());
@@ -182,7 +166,7 @@ public class MainActivity4 extends AppCompatActivity {
             handler.postDelayed(roadOne, 2000);
         }
     };
-    Runnable roadTwo = new Runnable() {
+    private Runnable roadTwo = new Runnable() {
         @Override
         public void run() {
             ImageView iv = new ImageView(getApplicationContext());
@@ -197,7 +181,7 @@ public class MainActivity4 extends AppCompatActivity {
             handler.postDelayed(roadTwo, 8000);
         }
     };
-    Runnable roadThree = new Runnable() {
+    private Runnable roadThree = new Runnable() {
         @Override
         public void run() {
             ImageView iv = new ImageView(getApplicationContext());
@@ -212,7 +196,7 @@ public class MainActivity4 extends AppCompatActivity {
             handler.postDelayed(roadThree, 2000);
         }
     };
-    Runnable roadFour = new Runnable() {
+    private Runnable roadFour = new Runnable() {
         @Override
         public void run() {
             ImageView iv = new ImageView(getApplicationContext());
@@ -221,13 +205,13 @@ public class MainActivity4 extends AppCompatActivity {
             view = (ViewGroup) findViewById(R.id.road_four);
             iv.setImageResource(R.drawable.mousetrap_obstacle);
             view.addView(iv);
-            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f, 1);
             animation.setDuration(6000);
             animation.start();
             handler.postDelayed(roadFour, 3000);
         }
     };
-    Runnable roadFive = new Runnable() {
+    private Runnable roadFive = new Runnable() {
         @Override
         public void run() {
             ImageView iv = new ImageView(getApplicationContext());

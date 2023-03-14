@@ -29,6 +29,8 @@ public class Player {
         if (yPos != 11) {
             yPos = yPos + 1;
         }
+
+        this.updateScore();
     }
     public void moveDown() {
         if (yPos != 0) {
@@ -73,7 +75,7 @@ public class Player {
         this.name = newName;
     }
 
-    public void removeLife(){
+    public void removeLife() {
         lives--;
         if (lives == 0) {
             alive = false;
@@ -92,11 +94,32 @@ public class Player {
         return rowHasBeenTraveledOn;
     }
 
-    public void setRowHasBeenTraveledOn(boolean hasBeenTraveledOn) {
-        this.rowHasBeenTraveledOn = rowHasBeenTraveledOn;
+    //Updates the player's score depending on what row they are on.
+    private void updateScore() {
+        if (!this.getRowHasBeenTraveledOn()[this.getyPos()]) {
+            // Sets score depending on which row has been crossed
+            if (this.getyPos() == 1 || this.getyPos() == 3 || this.getyPos() == 5) {
+                this.setScore(this.getScore() + 10);
+            } else if (this.getyPos() == 2 || this.getyPos() == 4) {
+                this.setScore(this.getScore() + 20);
+            } else if (this.getyPos() >= 7 && this.getyPos() <= 10) {
+                this.setScore(this.getScore() + 50);
+            } else if (this.getyPos() == 11 && this.getxPos() % 2 == 1) {
+                this.setScore(this.getScore() + 100);
+            }
+            this.setRowHasBeenTraveledOn(yPos, true);
+        }
     }
 
-    public void setAlive(boolean alive) { this.alive = alive; }
-    public boolean getAlive() { return this.alive; }
+    public void setRowHasBeenTraveledOn(int row, boolean hasBeenTraveledOn) {
+        this.rowHasBeenTraveledOn[row] = hasBeenTraveledOn;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+    public boolean getAlive() {
+        return this.alive;
+    }
 
 }

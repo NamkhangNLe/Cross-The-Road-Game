@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 
 
 public class Tests {
+    //Sprint 2 Unit Tests
+
     /**
      * @author Ben Steele
      * Tests that lives can be lost in the game in the player class.
@@ -174,6 +176,8 @@ public class Tests {
         assertEquals(testPlayer.getxPos(), 0);
     }
 
+    //Sprint 3 Unit Tests
+
     /**
      * @author Ben Steele
      * Ensures the vehicles speed is properly set
@@ -181,7 +185,7 @@ public class Tests {
     @Test
     public void testVehicleSpeed() {
         Vehicle testVehicle = new Vehicle(5,"1",true);
-        assertEquals(testVehicle.speed, 5);
+        assertEquals(testVehicle.getSpeed(), 5);
     }
     /**
      * @author Ben Steele
@@ -190,7 +194,31 @@ public class Tests {
     @Test
     public void testVehicleType() {
         Vehicle testVehicle = new Vehicle(5,"1",true);
-        assertEquals(testVehicle.type, "1");
+        assertEquals(testVehicle.getType(), "1");
+    }
+
+    /**
+     * @author Patrick Kim
+     * Ensures that the player's score is correct after moving up once.
+     */
+    @Test
+    public void testScoreAtRowOne() {
+        Player player = new Player(3, "Patrick");
+        player.moveUp();
+        assertEquals(10, player.getScore());
+    }
+
+    /**
+     * @author Patrick Kim
+     * Ensures that the player's score is correct on road 2.
+     */
+    @Test
+    public void testScoreAtRowTwo() {
+        Player player = new Player(3, "Patrick");
+        player.moveUp();
+        player.moveLeft();
+        player.moveUp();
+        assertEquals(30, player.getScore());
     }
 
     /**
@@ -222,7 +250,7 @@ public class Tests {
     @Test
     public void testVehicleDirection() {
         Vehicle testVehicle = new Vehicle(5,"1",true);
-        assertTrue(testVehicle.direction);
+        assertTrue(testVehicle.getDirection());
     }
 
     /**
@@ -285,7 +313,10 @@ public class Tests {
         for (int i = 0; i < 11; i++) { // increase i-bound as map lengthens
             int initScore = testPlayer.getScore();
             testPlayer.moveUp();
-            assertTrue(initScore < testPlayer.getScore());
+            //Makes sure we are not on a safe space.
+            if (i != 6) {
+                assertTrue(initScore < testPlayer.getScore());
+            }
         }
     }
 
