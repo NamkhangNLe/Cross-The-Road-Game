@@ -314,7 +314,7 @@ public class Tests {
             int initScore = testPlayer.getScore();
             testPlayer.moveUp();
             //Makes sure we are not on a safe space.
-            if (i != 6) {
+            if (i != 5) {
                 assertTrue(initScore < testPlayer.getScore());
             }
         }
