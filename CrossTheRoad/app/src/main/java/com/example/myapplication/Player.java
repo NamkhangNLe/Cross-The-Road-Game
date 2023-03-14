@@ -77,6 +77,9 @@ public class Player {
 
     public void removeLife() {
         lives--;
+        if (lives == 0) {
+            alive = false;
+        }
     }
 
     public int getScore() {

@@ -158,7 +158,7 @@ public class MainActivity4 extends AppCompatActivity {
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.road_one);
-            iv.setImageResource(R.drawable.test2);
+            iv.setImageResource(R.drawable.mousetrap_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
             animation.setDuration(5000);
@@ -173,7 +173,7 @@ public class MainActivity4 extends AppCompatActivity {
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.road_two);
-            iv.setImageResource(R.drawable.test3);
+            iv.setImageResource(R.drawable.knife_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
             animation.setDuration(10000);
@@ -188,7 +188,7 @@ public class MainActivity4 extends AppCompatActivity {
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.road_three);
-            iv.setImageResource(R.drawable.test1);
+            iv.setImageResource(R.drawable.rollingpin_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
             animation.setDuration(1000);
@@ -203,7 +203,7 @@ public class MainActivity4 extends AppCompatActivity {
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.road_four);
-            iv.setImageResource(R.drawable.test2);
+            iv.setImageResource(R.drawable.mousetrap_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
             animation.setDuration(6000);
@@ -218,7 +218,7 @@ public class MainActivity4 extends AppCompatActivity {
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.road_five);
-            iv.setImageResource(R.drawable.test1);
+            iv.setImageResource(R.drawable.rollingpin_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
             animation.setDuration(8000);

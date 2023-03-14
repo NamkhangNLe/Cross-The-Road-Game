@@ -223,26 +223,6 @@ public class Tests {
 
     /**
      * @author
-     * Checks that the vehicle direction is properly set
-     */
-    @Test
-    public void testVehicleDirection() {
-        Vehicle testVehicle = new Vehicle(5,"1",true);
-        assertTrue(testVehicle.getDirection());
-    }
-
-    /**
-     * @author
-     * checks to make sure that the player is set to "alive" at the beginning of the game
-     */
-    @Test
-    public void isAlive() {
-        Player testPlayer = new Player(5,"Frank");
-        assertTrue(testPlayer.getAlive());
-    }
-
-    /**
-     * @author
      * checks to make sure that the players score starts at 0
      */
     @Test
@@ -263,4 +243,46 @@ public class Tests {
         assertEquals(testPlayer.getyPos(), 0);
     }
 
+    /**
+     * @author Rushda Umrani
+     * Checks that the vehicle direction is properly set
+     */
+    @Test
+    public void testVehicleDirection() {
+        Vehicle testVehicle = new Vehicle(5,"1",true);
+        assertTrue(testVehicle.getDirection());
+    }
+
+    /**
+     * @author Rushda Umrani
+     * checks to make sure that the player is set to "alive" at the beginning of the game
+     */
+    @Test
+    public void isAlive() {
+        Player testPlayer = new Player(5,"Frank");
+        assertTrue(testPlayer.getAlive());
+    }
+
+    /**
+     * @author Keller Smith
+     * Makes sure the player is no longer 'alive' if all lives lost.
+     */
+    @Test
+    public void isDead() {
+        Player testPlayer = new Player(3, "Bob");
+        testPlayer.removeLife();
+        testPlayer.removeLife();
+        testPlayer.removeLife();
+        assertFalse(testPlayer.getAlive());
+    }
+
+    /**
+     * @author Keller Smith
+     * Makes sure the first row is set to traveled on startup
+     */
+    @Test
+    public void firstRowTraveledOnStart() {
+        Player testPlayer = new Player(5, "Bob");
+        assertTrue(testPlayer.getRowHasBeenTraveledOn()[0]);
+    }
 }
