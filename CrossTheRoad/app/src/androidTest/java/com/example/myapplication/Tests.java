@@ -194,7 +194,7 @@ public class Tests {
     }
 
     /**
-     * @author
+     * @author Namkhang Le
      * checks to make sure that the players score starts at 0
      */
     @Test
@@ -204,7 +204,7 @@ public class Tests {
     }
 
     /**
-     * @author
+     * @author Namkhang Le
      * Checks that the starting point is actually where the mouse starts at in the
      * middle of the bottom of the screen
      */
@@ -288,4 +288,5 @@ public class Tests {
             assertTrue(initScore < testPlayer.getScore());
         }
     }
+
 }
