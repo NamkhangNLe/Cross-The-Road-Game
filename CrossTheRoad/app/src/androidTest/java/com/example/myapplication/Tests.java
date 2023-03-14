@@ -235,5 +235,26 @@ public class Tests {
         assertTrue(testPlayer.getAlive());
     }
 
+    /**
+     * @author Keller Smith
+     * Makes sure the player is no longer 'alive' if all lives lost.
+     */
+    @Test
+    public void isDead() {
+        Player testPlayer = new Player(3, "Bob");
+        testPlayer.removeLife();
+        testPlayer.removeLife();
+        testPlayer.removeLife();
+        assertFalse(testPlayer.getAlive());
+    }
 
+    /**
+     * @author Keller Smith
+     * Makes sure the first row is set to traveled on startup
+     */
+    @Test
+    public void firstRowTraveledOnStart() {
+        Player testPlayer = new Player(5, "Bob");
+        assertTrue(testPlayer.getRowHasBeenTraveledOn()[0]);
+    }
 }
