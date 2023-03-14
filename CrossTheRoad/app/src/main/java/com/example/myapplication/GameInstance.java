@@ -5,25 +5,27 @@ public class GameInstance {
     private String difficulty;
     private int difficultyNum;
 
-    public GameInstance(Player player, String difficulty){
+    public GameInstance(Player player, String difficulty) {
         this.player = player;
         this.difficulty = difficulty;
         switch (difficulty) {
-            case "Easy":
-                difficultyNum = 1;
-                break;
-            case "Medium":
-                difficultyNum = 2;
-                break;
-            case "Hard":
-                difficultyNum = 3;
-                break;
+        case "Easy":
+            difficultyNum = 1;
+            break;
+        case "Medium":
+            difficultyNum = 2;
+            break;
+        case "Hard":
+            difficultyNum = 3;
+            break;
+        default:
+            break;
         }
     }
     public Player getPlayer() {
         return player;
     }
-    public void setPlayer(Player newPlayer){
+    public void setPlayer(Player newPlayer) {
         this.player = newPlayer;
     }
 
