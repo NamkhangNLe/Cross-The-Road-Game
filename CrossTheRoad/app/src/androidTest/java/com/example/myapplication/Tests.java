@@ -313,7 +313,10 @@ public class Tests {
         for (int i = 0; i < 11; i++) { // increase i-bound as map lengthens
             int initScore = testPlayer.getScore();
             testPlayer.moveUp();
-            assertTrue(initScore < testPlayer.getScore());
+            //Makes sure we are not on a safe space.
+            if (i != 6) {
+                assertTrue(initScore < testPlayer.getScore());
+            }
         }
     }
 

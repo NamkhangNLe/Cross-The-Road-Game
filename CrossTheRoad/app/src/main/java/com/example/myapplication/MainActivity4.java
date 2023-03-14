@@ -205,7 +205,7 @@ public class MainActivity4 extends AppCompatActivity {
             view = (ViewGroup) findViewById(R.id.road_four);
             iv.setImageResource(R.drawable.mousetrap_obstacle);
             view.addView(iv);
-            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f, 1);
             animation.setDuration(6000);
             animation.start();
             handler.postDelayed(roadFour, 3000);
