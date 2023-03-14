@@ -222,7 +222,7 @@ public class Tests {
     }
 
     /**
-     * @author
+     * @author Namkhang Le
      * checks to make sure that the players score starts at 0
      */
     @Test
@@ -232,7 +232,7 @@ public class Tests {
     }
 
     /**
-     * @author
+     * @author Namkhang Le
      * Checks that the starting point is actually where the mouse starts at in the
      * middle of the bottom of the screen
      */
@@ -285,4 +285,36 @@ public class Tests {
         Player testPlayer = new Player(5, "Bob");
         assertTrue(testPlayer.getRowHasBeenTraveledOn()[0]);
     }
+
+    /**
+     * @author Amanda Janusz
+     * Ensures that lateral movement on safe ground (specifically yPos 7) does not deduct lives.
+     */
+    @Test
+    public void safeGroundIsSafe() {
+        Player testPlayer = new Player();
+        for (int i = 0; i <6; i++) {
+            testPlayer.moveUp();
+        }
+        int currLives = testPlayer.getLives();
+        testPlayer.moveRight();
+        testPlayer.moveRight();
+        testPlayer.moveLeft();
+        assertEquals(currLives, testPlayer.getLives());
+    }
+
+    /**
+     * @author Amanda Janusz
+     * Verifies that score increases for all forward movement.
+     */
+    @Test
+    public void forwardMovementIncreasesScore() {
+        Player testPlayer = new Player();
+        for (int i = 0; i < 11; i++) { // increase i-bound as map lengthens
+            int initScore = testPlayer.getScore();
+            testPlayer.moveUp();
+            assertTrue(initScore < testPlayer.getScore());
+        }
+    }
+
 }
