@@ -89,9 +89,24 @@ public class MainActivity4 extends AppCompatActivity {
                 || mouse.getyPos() == 8
                 || mouse.getyPos() == 9) {
             mouse.removeLife();
-            if (mouse.getLives() == 0) {
-                mouse.setAlive(false);
-                gameOver();
+            if (mouse.getLives() > 0) {
+                float xMove = characterSprite.getWidth();
+                characterSprite.setX(xMove * 5);
+                float yMove = characterSprite.getHeight();
+                characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
+
+                //Reset the mouse's position.
+                mouse.resetPosition();
+                characterSprite.setRotation(0);
+
+                //Reset the score to 0.
+                mouse.setScore(0);
+                TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+                int score = mouse.getScore();
+                scoreDisplay.setText(Integer.toString(score));
+                mouse.resetScoreIncrement();
+                return;
+            } else {
                 finish();
             }
             TextView livesDisplay = findViewById(R.id.livesDisplay);
