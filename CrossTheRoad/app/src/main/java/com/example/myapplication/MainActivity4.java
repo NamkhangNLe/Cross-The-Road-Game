@@ -108,16 +108,6 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     public void moveDown(View view) {
-//        //Rotate the mouse.
-//        characterSprite.setRotation(180);
-//
-//        if (mouse.getyPos() == 0) {
-//            return;
-//        }
-//        float move = characterSprite.getHeight();
-//        characterSprite.setY(characterSprite.getY() + move);
-//        mouse.moveDown();
-
         //Rotate the mouse.
         characterSprite.setRotation(180);
 
@@ -146,13 +136,6 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveLeft(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
-
-//        if (mouse.getxPos() == 0) {
-//            return;
-//        }
-//        float move = characterSprite.getHeight();
-//        characterSprite.setX(characterSprite.getX() - move);
-//        mouse.moveLeft();
 
         if (mouse.getyPos() == 6
                 || mouse.getyPos() == 7
