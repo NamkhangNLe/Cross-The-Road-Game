@@ -89,6 +89,9 @@ public class MainActivity4 extends AppCompatActivity {
                 || mouse.getyPos() == 8
                 || mouse.getyPos() == 9) {
             mouse.removeLife();
+            TextView livesDisplay = findViewById(R.id.livesDisplay);
+            livesDisplay.setText(Integer.toString(mouse.getLives()));
+
             if (mouse.getLives() > 0) {
                 float xMove = characterSprite.getWidth();
                 characterSprite.setX(xMove * 5);
@@ -109,8 +112,6 @@ public class MainActivity4 extends AppCompatActivity {
             } else {
                 finish();
             }
-            TextView livesDisplay = findViewById(R.id.livesDisplay);
-            livesDisplay.setText(Integer.toString(mouse.getLives()));
         }
         if (mouse.getyPos() != 11) {
             float move = characterSprite.getHeight();

@@ -320,4 +320,38 @@ public class Tests {
         }
     }
 
+    /**
+     * @author Patrick Kim
+     * Checks that the player's X position is reset correctly.
+     */
+    @Test
+    public void testXResetPosition() {
+        Player testPlayer = new Player();
+        int initialXPos = testPlayer.getxPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialXPos, testPlayer.getxPos());
+    }
+
+    /**
+     * @author Patrick Kim
+     * Checks that the player's Y position is reset correctly.
+     */
+    @Test
+    public void testYResetPosition() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialYPos, testPlayer.getyPos());
+    }
+
 }
