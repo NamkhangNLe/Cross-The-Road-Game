@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -164,6 +167,43 @@ public class MainActivity4 extends AppCompatActivity {
             animation.setDuration(5000);
             animation.start();
             handler.postDelayed(roadOne, 2000);
+
+            //Detect collision between the mouse and the vehicle.
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+
+            //Detects collision and does subsequent actions.
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 1) {
+                //Remove a life.
+                mouse.removeLife();
+                TextView livesDisplay = findViewById(R.id.livesDisplay);
+                livesDisplay.setText(Integer.toString(mouse.getLives()));
+
+                //Reset the mouse to the start.
+                if (mouse.getLives() > 0) {
+                    float xMove = characterSprite.getWidth();
+                    characterSprite.setX(xMove * 5);
+                    float yMove = characterSprite.getHeight();
+                    characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
+
+                    //Reset the mouse's position.
+                    mouse.resetPosition();
+                    characterSprite.setRotation(0);
+
+                    //Reset the score to 0.
+                    mouse.setScore(0);
+                    TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+                    int score = mouse.getScore();
+                    scoreDisplay.setText(Integer.toString(score));
+                    mouse.resetScoreIncrement();
+                } else {
+                    //Go to GameOver Screen.
+                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    finish();
+                }
+            }
         }
     };
     private Runnable roadTwo = new Runnable() {
@@ -179,6 +219,39 @@ public class MainActivity4 extends AppCompatActivity {
             animation.setDuration(10000);
             animation.start();
             handler.postDelayed(roadTwo, 8000);
+
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 2) {
+                mouse.removeLife();
+                TextView livesDisplay = findViewById(R.id.livesDisplay);
+                livesDisplay.setText(Integer.toString(mouse.getLives()));
+
+                //Reset the mouse to the start.
+                if (mouse.getLives() > 0) {
+                    float xMove = characterSprite.getWidth();
+                    characterSprite.setX(xMove * 5);
+                    float yMove = characterSprite.getHeight();
+                    characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
+
+                    //Reset the mouse's position.
+                    mouse.resetPosition();
+                    characterSprite.setRotation(0);
+
+                    //Reset the score to 0.
+                    mouse.setScore(0);
+                    TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+                    int score = mouse.getScore();
+                    scoreDisplay.setText(Integer.toString(score));
+                    mouse.resetScoreIncrement();
+                } else {
+                    //Go to GameOver Screen.
+                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    finish();
+                }
+            }
         }
     };
     private Runnable roadThree = new Runnable() {
@@ -194,6 +267,39 @@ public class MainActivity4 extends AppCompatActivity {
             animation.setDuration(1000);
             animation.start();
             handler.postDelayed(roadThree, 2000);
+
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 3) {
+                mouse.removeLife();
+                TextView livesDisplay = findViewById(R.id.livesDisplay);
+                livesDisplay.setText(Integer.toString(mouse.getLives()));
+
+                //Reset the mouse to the start.
+                if (mouse.getLives() > 0) {
+                    float xMove = characterSprite.getWidth();
+                    characterSprite.setX(xMove * 5);
+                    float yMove = characterSprite.getHeight();
+                    characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
+
+                    //Reset the mouse's position.
+                    mouse.resetPosition();
+                    characterSprite.setRotation(0);
+
+                    //Reset the score to 0.
+                    mouse.setScore(0);
+                    TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+                    int score = mouse.getScore();
+                    scoreDisplay.setText(Integer.toString(score));
+                    mouse.resetScoreIncrement();
+                } else {
+                    //Go to GameOver Screen.
+                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    finish();
+                }
+            }
         }
     };
     private Runnable roadFour = new Runnable() {
@@ -209,6 +315,39 @@ public class MainActivity4 extends AppCompatActivity {
             animation.setDuration(6000);
             animation.start();
             handler.postDelayed(roadFour, 3000);
+
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 4) {
+                mouse.removeLife();
+                TextView livesDisplay = findViewById(R.id.livesDisplay);
+                livesDisplay.setText(Integer.toString(mouse.getLives()));
+
+                //Reset the mouse to the start.
+                if (mouse.getLives() > 0) {
+                    float xMove = characterSprite.getWidth();
+                    characterSprite.setX(xMove * 5);
+                    float yMove = characterSprite.getHeight();
+                    characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
+
+                    //Reset the mouse's position.
+                    mouse.resetPosition();
+                    characterSprite.setRotation(0);
+
+                    //Reset the score to 0.
+                    mouse.setScore(0);
+                    TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+                    int score = mouse.getScore();
+                    scoreDisplay.setText(Integer.toString(score));
+                    mouse.resetScoreIncrement();
+                } else {
+                    //Go to GameOver Screen.
+                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    finish();
+                }
+            }
         }
     };
     private Runnable roadFive = new Runnable() {
@@ -224,6 +363,39 @@ public class MainActivity4 extends AppCompatActivity {
             animation.setDuration(8000);
             animation.start();
             handler.postDelayed(roadFive, 4000);
+
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 5) {
+                mouse.removeLife();
+                TextView livesDisplay = findViewById(R.id.livesDisplay);
+                livesDisplay.setText(Integer.toString(mouse.getLives()));
+
+                //Reset the mouse to the start.
+                if (mouse.getLives() > 0) {
+                    float xMove = characterSprite.getWidth();
+                    characterSprite.setX(xMove * 5);
+                    float yMove = characterSprite.getHeight();
+                    characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
+
+                    //Reset the mouse's position.
+                    mouse.resetPosition();
+                    characterSprite.setRotation(0);
+
+                    //Reset the score to 0.
+                    mouse.setScore(0);
+                    TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+                    int score = mouse.getScore();
+                    scoreDisplay.setText(Integer.toString(score));
+                    mouse.resetScoreIncrement();
+                } else {
+                    //Go to GameOver Screen.
+                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    finish();
+                }
+            }
         }
     };
 }
