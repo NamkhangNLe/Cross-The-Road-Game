@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
-import android.animation.ValueAnimator;
-import android.app.Activity;
+//import android.animation.ValueAnimator;
+//import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -108,16 +108,6 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     public void moveDown(View view) {
-//        //Rotate the mouse.
-//        characterSprite.setRotation(180);
-//
-//        if (mouse.getyPos() == 0) {
-//            return;
-//        }
-//        float move = characterSprite.getHeight();
-//        characterSprite.setY(characterSprite.getY() + move);
-//        mouse.moveDown();
-
         //Rotate the mouse.
         characterSprite.setRotation(180);
 
@@ -146,13 +136,6 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveLeft(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
-
-//        if (mouse.getxPos() == 0) {
-//            return;
-//        }
-//        float move = characterSprite.getHeight();
-//        characterSprite.setX(characterSprite.getX() - move);
-//        mouse.moveLeft();
 
         if (mouse.getyPos() == 6
                 || mouse.getyPos() == 7
@@ -263,7 +246,8 @@ public class MainActivity4 extends AppCompatActivity {
                     mouse.resetScoreIncrement();
                 } else {
                     //Go to GameOver Screen.
-                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    //This is a placeholder method for now that simply goes back to the previous
+                    // screen.
                     handler.removeCallbacks(roadOne);
                     finish();
                 }
@@ -312,7 +296,8 @@ public class MainActivity4 extends AppCompatActivity {
                     mouse.resetScoreIncrement();
                 } else {
                     //Go to GameOver Screen.
-                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    //This is a placeholder method for now that simply goes back to the previous
+                    // screen.
                     handler.removeCallbacks(roadTwo);
                     finish();
                 }
@@ -361,7 +346,8 @@ public class MainActivity4 extends AppCompatActivity {
                     mouse.resetScoreIncrement();
                 } else {
                     //Go to GameOver Screen.
-                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    //This is a placeholder method for now that simply goes back to the previous
+                    // screen.
                     handler.removeCallbacks(roadThree);
                     finish();
                 }
@@ -410,7 +396,8 @@ public class MainActivity4 extends AppCompatActivity {
                     mouse.resetScoreIncrement();
                 } else {
                     //Go to GameOver Screen.
-                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    //This is a placeholder method for now that simply goes back to the previous
+                    // screen.
                     handler.removeCallbacks(roadFour);
                     finish();
                 }
@@ -459,7 +446,8 @@ public class MainActivity4 extends AppCompatActivity {
                     mouse.resetScoreIncrement();
                 } else {
                     //Go to GameOver Screen.
-                    //This is a placeholder method for now that simply goes back to the previous screen.
+                    //This is a placeholder method for now that simply goes back to the previous
+                    // screen.
                     handler.removeCallbacks(roadFive);
                     finish();
                 }
