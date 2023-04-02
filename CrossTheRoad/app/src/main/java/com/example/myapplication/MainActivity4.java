@@ -89,9 +89,10 @@ public class MainActivity4 extends AppCompatActivity {
                 || mouse.getyPos() == 8
                 || mouse.getyPos() == 9) {
             mouse.removeLife();
-            if (mouse.getLives() < 0) {
+            if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
                 gameOver();
+                finish();
             }
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
@@ -107,37 +108,99 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     public void moveDown(View view) {
+//        //Rotate the mouse.
+//        characterSprite.setRotation(180);
+//
+//        if (mouse.getyPos() == 0) {
+//            return;
+//        }
+//        float move = characterSprite.getHeight();
+//        characterSprite.setY(characterSprite.getY() + move);
+//        mouse.moveDown();
+
         //Rotate the mouse.
         characterSprite.setRotation(180);
 
-        if (mouse.getyPos() == 0) {
-            return;
+        if (mouse.getyPos() == 6
+                || mouse.getyPos() == 7
+                || mouse.getyPos() == 8
+                || mouse.getyPos() == 9) {
+            mouse.removeLife();
+            if (mouse.getLives() == 0) {
+                mouse.setAlive(false);
+                gameOver();
+                finish();
+            }
+            TextView livesDisplay = findViewById(R.id.livesDisplay);
+            livesDisplay.setText(Integer.toString(mouse.getLives()));
         }
-        float move = characterSprite.getHeight();
-        characterSprite.setY(characterSprite.getY() + move);
-        mouse.moveDown();
+        if (mouse.getyPos() != 0) {
+            float move = characterSprite.getHeight();
+            characterSprite.setY(characterSprite.getY() + move);
+            mouse.moveDown();
+        }
+
+        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+        scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
     public void moveLeft(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
 
-        if (mouse.getxPos() == 0) {
-            return;
+//        if (mouse.getxPos() == 0) {
+//            return;
+//        }
+//        float move = characterSprite.getHeight();
+//        characterSprite.setX(characterSprite.getX() - move);
+//        mouse.moveLeft();
+
+        if (mouse.getyPos() == 6
+                || mouse.getyPos() == 7
+                || mouse.getyPos() == 8
+                || mouse.getyPos() == 9) {
+            mouse.removeLife();
+            if (mouse.getLives() == 0) {
+                mouse.setAlive(false);
+                gameOver();
+                finish();
+            }
+            TextView livesDisplay = findViewById(R.id.livesDisplay);
+            livesDisplay.setText(Integer.toString(mouse.getLives()));
         }
-        float move = characterSprite.getHeight();
-        characterSprite.setX(characterSprite.getX() - move);
-        mouse.moveLeft();
+        if (mouse.getxPos() != 0) {
+            float move = characterSprite.getHeight();
+            characterSprite.setX(characterSprite.getX() - move);
+            mouse.moveLeft();
+        }
+
+        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+        scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
     public void moveRight(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(90);
 
-        float move = characterSprite.getHeight();
-        if (mouse.getxPos() == 9) {
-            return;
+        if (mouse.getyPos() == 6
+                || mouse.getyPos() == 7
+                || mouse.getyPos() == 8
+                || mouse.getyPos() == 9) {
+            mouse.removeLife();
+            if (mouse.getLives() == 0) {
+                mouse.setAlive(false);
+                gameOver();
+                finish();
+            }
+            TextView livesDisplay = findViewById(R.id.livesDisplay);
+            livesDisplay.setText(Integer.toString(mouse.getLives()));
         }
-        characterSprite.setX((characterSprite.getX() + move));
-        mouse.moveRight();
+        if (mouse.getxPos() != 9) {
+            float move = characterSprite.getHeight();
+            characterSprite.setX((characterSprite.getX() + move));
+            mouse.moveRight();
+        }
+
+        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+        scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
 
     public void gameOver() {
