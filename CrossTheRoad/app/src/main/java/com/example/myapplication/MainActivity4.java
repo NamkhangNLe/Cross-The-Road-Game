@@ -201,6 +201,7 @@ public class MainActivity4 extends AppCompatActivity {
                 } else {
                     //Go to GameOver Screen.
                     //This is a placeholder method for now that simply goes back to the previous screen.
+                    handler.removeCallbacks(roadOne);
                     finish();
                 }
             }
@@ -249,6 +250,7 @@ public class MainActivity4 extends AppCompatActivity {
                 } else {
                     //Go to GameOver Screen.
                     //This is a placeholder method for now that simply goes back to the previous screen.
+                    handler.removeCallbacks(roadTwo);
                     finish();
                 }
             }
@@ -297,6 +299,7 @@ public class MainActivity4 extends AppCompatActivity {
                 } else {
                     //Go to GameOver Screen.
                     //This is a placeholder method for now that simply goes back to the previous screen.
+                    handler.removeCallbacks(roadThree);
                     finish();
                 }
             }
@@ -345,6 +348,7 @@ public class MainActivity4 extends AppCompatActivity {
                 } else {
                     //Go to GameOver Screen.
                     //This is a placeholder method for now that simply goes back to the previous screen.
+                    handler.removeCallbacks(roadFour);
                     finish();
                 }
             }
@@ -393,9 +397,15 @@ public class MainActivity4 extends AppCompatActivity {
                 } else {
                     //Go to GameOver Screen.
                     //This is a placeholder method for now that simply goes back to the previous screen.
+                    handler.removeCallbacks(roadFive);
                     finish();
                 }
             }
         }
     };
+    public void finish() {
+        Intent intent = new Intent(this, MainActivity5.class);
+        intent.putExtra("score", Integer.toString(mouse.getScore()));
+        startActivity(intent);
+    }
 }
