@@ -238,7 +238,7 @@ public class MainActivity4 extends AppCompatActivity {
             //Detects collision and does subsequent actions.
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 1) {
                 //Remove a life.
-                mouse.removeLife();
+                mouse.hitByCar();
                 TextView livesDisplay = findViewById(R.id.livesDisplay);
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
@@ -288,7 +288,7 @@ public class MainActivity4 extends AppCompatActivity {
             Rect rc2 = new Rect();
             view.getDrawingRect(rc2);
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 2) {
-                mouse.removeLife();
+                mouse.hitByCar();
                 TextView livesDisplay = findViewById(R.id.livesDisplay);
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
@@ -338,7 +338,7 @@ public class MainActivity4 extends AppCompatActivity {
             Rect rc2 = new Rect();
             view.getDrawingRect(rc2);
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 3) {
-                mouse.removeLife();
+                mouse.hitByCar();
                 TextView livesDisplay = findViewById(R.id.livesDisplay);
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
@@ -388,7 +388,7 @@ public class MainActivity4 extends AppCompatActivity {
             Rect rc2 = new Rect();
             view.getDrawingRect(rc2);
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 4) {
-                mouse.removeLife();
+                mouse.hitByCar();
                 TextView livesDisplay = findViewById(R.id.livesDisplay);
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
