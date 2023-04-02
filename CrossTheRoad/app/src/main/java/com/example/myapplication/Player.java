@@ -82,6 +82,17 @@ public class Player {
         }
     }
 
+    public void resetPosition() {
+        this.xPos = 5;
+        this.yPos = 0;
+    }
+
+    public void resetScoreIncrement() {
+        for (int i = 1; i < 12; i++) {
+            rowHasBeenTraveledOn[i] = false;
+        }
+    }
+
     public int getScore() {
         return score;
     }
