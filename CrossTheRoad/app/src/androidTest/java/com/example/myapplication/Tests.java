@@ -401,4 +401,16 @@ public class Tests {
         testPlayer.hitByCar();
         assertEquals(initScore, testPlayer.getScore());
     }
+
+    /**
+     * @author [YOUR NAME]
+     * Checks if score does not change after touching water.
+     */
+    @Test
+    public void touchedWaterNoScoreChange() {
+        Player testPlayer = new Player();
+        int initScore = testPlayer.getScore();
+        testPlayer.touchedWater();
+        assertEquals(initScore, testPlayer.getScore());
+    }
 }
