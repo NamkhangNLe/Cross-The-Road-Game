@@ -379,4 +379,27 @@ public class Tests {
 
         assertEquals(initialYPos, testPlayer.getyPos());
     }
+
+    /**
+     * @author Rushda Umrani
+     * Checks if hitting water reduces lives by 1.
+     */
+    @Test
+    public void waterRemoveLife() {
+        Player testPlayer = new Player(5, "Bob");
+        testPlayer.touchedWater();
+        assertEquals(4, testPlayer.getLives());
+    }
+
+    /**
+     * @author Rushda Umrani
+     * Checks if score does not change after hitting a car.
+     */
+    @Test
+    public void hitByCarNoScoreChange() {
+        Player testPlayer = new Player();
+        int initScore = testPlayer.getScore();
+        testPlayer.hitByCar();
+        assertEquals(initScore, testPlayer.getScore());
+    }
 }
