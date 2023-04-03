@@ -404,6 +404,35 @@ public class Tests {
     }
 
     /**
+     * @author Amanda Janusz
+     * Verifies that hitting a car decrements lives.
+     */
+    @Test
+    public void carDecrementsLives() {
+        Player testPlayer = new Player(5, "Bob");
+        for (int i = 0; i < 5; i++) {
+            int currLives = testPlayer.getLives();
+            testPlayer.hitByCar();
+            assertTrue(testPlayer.getLives() < currLives);
+        }
+    }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that hitting water decrements lives.
+     */
+
+    @Test
+    public void waterDecrementsLives() {
+        Player testPlayer = new Player(5, "Bob");
+        for (int i = 0; i < 5; i++) {
+            int currLives = testPlayer.getLives();
+            testPlayer.touchedWater();
+            assertTrue(testPlayer.getLives() < currLives);
+        }
+    }
+
+     /**
      * @author [YOUR NAME]
      * Checks if score does not change after touching water.
      */
