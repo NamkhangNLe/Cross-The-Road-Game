@@ -433,7 +433,7 @@ public class Tests {
     }
 
      /**
-     * @author [YOUR NAME]
+     * @author Ben Steele
      * Checks if score does not change after touching water.
      */
     @Test
@@ -442,6 +442,23 @@ public class Tests {
         int initScore = testPlayer.getScore();
         testPlayer.touchedWater();
         assertEquals(initScore, testPlayer.getScore());
+    }
+
+    /**
+     * @author Ben Steele
+     * Checks that the player's Y position is reset correctly.
+     */
+    @Test
+    public void testResetPosition() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialYPos, testPlayer.getyPos());
     }
 
     /**
