@@ -414,4 +414,33 @@ public class Tests {
         testPlayer.touchedWater();
         assertEquals(initScore, testPlayer.getScore());
     }
+
+    /**
+     * @author Namkhang Le
+     * Verifies that the hit by car function makes you lose your score.
+     */
+    @Test
+    public void testLossOfScore() {
+        Player testPlayer = new Player(5, "Bob");
+        testPlayer.hitByCar();
+        testPlayer.hitByCar();
+        assertEquals(testPlayer.getScore(), 0);
+    }
+
+    /**
+     * @author Namkhang Le
+     * Makes sure no score change on reset position
+     */
+    @Test
+    public void scoreResetPosition() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(30, testPlayer.getScore());
+    }
 }
