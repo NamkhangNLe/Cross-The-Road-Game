@@ -320,4 +320,62 @@ public class Tests {
         }
     }
 
+    /**
+     * @author Keller Smith
+     * Verifies that the hit by car function makes you lose a life.
+     */
+    @Test
+    public void testHitByCar() {
+        Player testPlayer = new Player(5, "Bob");
+        testPlayer.hitByCar();
+        testPlayer.hitByCar();
+        assertEquals(testPlayer.getLives(), 3);
+    }
+
+    /**
+     * @author Keller Smith
+     * Verifies that when hit by car, if lives == 0, there is a game over.
+     */
+    @Test
+    public void testDeathByCar() {
+        Player testPlayer = new Player(5, "Bob");
+        for (int i = 0; i < 5; i++) {
+            testPlayer.hitByCar();
+        }
+        assertFalse(testPlayer.getAlive());
+    }
+
+    /**
+     * @author Patrick Kim
+     * Checks that the player's X position is reset correctly.
+     */
+    @Test
+    public void testXResetPosition() {
+        Player testPlayer = new Player();
+        int initialXPos = testPlayer.getxPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialXPos, testPlayer.getxPos());
+    }
+
+    /**
+     * @author Patrick Kim
+     * Checks that the player's Y position is reset correctly.
+     */
+    @Test
+    public void testYResetPosition() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialYPos, testPlayer.getyPos());
+    }
 }
