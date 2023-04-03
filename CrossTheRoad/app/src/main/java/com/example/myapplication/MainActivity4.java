@@ -88,7 +88,7 @@ public class MainActivity4 extends AppCompatActivity {
                 || mouse.getyPos() == 7
                 || mouse.getyPos() == 8
                 || mouse.getyPos() == 9) {
-            mouse.removeLife();
+            mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
 
@@ -131,7 +131,7 @@ public class MainActivity4 extends AppCompatActivity {
                 || mouse.getyPos() == 7
                 || mouse.getyPos() == 8
                 || mouse.getyPos() == 9) {
-            mouse.removeLife();
+            mouse.touchedWater();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
                 gameOver();

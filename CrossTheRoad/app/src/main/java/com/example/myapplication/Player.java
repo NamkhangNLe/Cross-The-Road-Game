@@ -128,6 +128,13 @@ public class Player {
         }
     }
 
+    public void touchedWater() {
+        lives--;
+        if (lives == 0) {
+            alive = false;
+        }
+    }
+
     public void setRowHasBeenTraveledOn(int row, boolean hasBeenTraveledOn) {
         this.rowHasBeenTraveledOn[row] = hasBeenTraveledOn;
     }
