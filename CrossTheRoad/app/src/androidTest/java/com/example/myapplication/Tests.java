@@ -320,6 +320,7 @@ public class Tests {
         }
     }
 
+    //Sprint 4 Unit Tests
     /**
      * @author Keller Smith
      * Verifies that the hit by car function makes you lose a life.
