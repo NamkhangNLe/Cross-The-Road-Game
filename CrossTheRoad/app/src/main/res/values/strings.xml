@@ -19,6 +19,7 @@
     <string name="restart">Restart</string>
     <string name="restartText">Click to Restart!</string>
     <string name="exit">Exit</string>
+    <string name="you_win">You Win!</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
