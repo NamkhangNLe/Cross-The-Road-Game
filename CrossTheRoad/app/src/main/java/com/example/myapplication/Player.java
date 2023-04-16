@@ -150,6 +150,6 @@ public class Player {
 
     public boolean getRiding() {return this.riding;}
 
-    public void setRiding() {this.riding = riding;}
+    public void setRiding(boolean riding) {this.riding = riding;}
 
 }

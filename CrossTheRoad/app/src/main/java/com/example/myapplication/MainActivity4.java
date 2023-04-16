@@ -5,6 +5,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -84,10 +85,7 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveUp(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(0);
-        if (mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9
-                || mouse.getyPos() == 10) {
+        if (mouse.getyPos() > 5 && mouse.getRiding() == false) {
             mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
@@ -127,10 +125,7 @@ public class MainActivity4 extends AppCompatActivity {
         //Rotate the mouse.
         characterSprite.setRotation(180);
 
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+        if (mouse.getyPos() > 5 && mouse.getRiding() == false) {
             mouse.touchedWater();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -153,10 +148,7 @@ public class MainActivity4 extends AppCompatActivity {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
 
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+        if (mouse.getyPos() > 6 && mouse.getRiding() == false) {
             mouse.removeLife();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -179,10 +171,7 @@ public class MainActivity4 extends AppCompatActivity {
         //Rotate the mouse.
         characterSprite.setRotation(90);
 
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+        if (mouse.getyPos() > 6 && mouse.getRiding() == false) {
             mouse.removeLife();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -219,6 +208,7 @@ public class MainActivity4 extends AppCompatActivity {
         riverTwo.run();
         riverThree.run();
         riverFour.run();
+
     }
     private Runnable roadOne = new Runnable() {
         @Override
@@ -482,29 +472,38 @@ public class MainActivity4 extends AppCompatActivity {
     private Runnable riverOne = new Runnable() {
         @Override
         public void run() {
-            ImageView iv = new ImageView(getApplicationContext());
+            ImageView log1 = new ImageView(getApplicationContext());
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.river_one);
-            iv.setImageResource(R.drawable.log);
-            view.addView(iv);
-            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            log1.setImageResource(R.drawable.log);
+            view.addView(log1);
+            animation = ObjectAnimator.ofFloat(log1, "translationX", 2000f);
             animation.setDuration(10000);
             animation.start();
             handler.postDelayed(riverOne, 3000);
+            float xDiff = characterSprite.getX() - log1.getTranslationX();
+            xDiff = Math.abs(xDiff);
+            Boolean bool = mouse.getRiding();
+            Log.d("App",bool.toString());
+            if (xDiff < (characterSprite.getHeight() * 2) && mouse.getyPos() == 7) {
+                mouse.setRiding(true);
+
+
+            }
         }
     };
 
     private Runnable riverTwo = new Runnable() {
         @Override
         public void run() {
-            ImageView iv = new ImageView(getApplicationContext());
+            ImageView log2 = new ImageView(getApplicationContext());
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.river_two);
-            iv.setImageResource(R.drawable.log);
-            view.addView(iv);
-            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f, 1);
+            log2.setImageResource(R.drawable.log);
+            view.addView(log2);
+            animation = ObjectAnimator.ofFloat(log2, "translationX", 2000f, 1);
             animation.setDuration(10000);
             animation.start();
             handler.postDelayed(riverTwo, 2500);
@@ -514,13 +513,13 @@ public class MainActivity4 extends AppCompatActivity {
     private Runnable riverThree = new Runnable() {
         @Override
         public void run() {
-            ImageView iv = new ImageView(getApplicationContext());
+            ImageView log3 = new ImageView(getApplicationContext());
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.river_three);
-            iv.setImageResource(R.drawable.log);
-            view.addView(iv);
-            animation = ObjectAnimator.ofFloat(iv, "translationX", 3000f);
+            log3.setImageResource(R.drawable.log);
+            view.addView(log3);
+            animation = ObjectAnimator.ofFloat(log3, "translationX", 3000f);
             animation.setDuration(10000);
             animation.start();
             handler.postDelayed(riverThree, 2800);
@@ -530,18 +529,20 @@ public class MainActivity4 extends AppCompatActivity {
     private Runnable riverFour = new Runnable() {
         @Override
         public void run() {
-            ImageView iv = new ImageView(getApplicationContext());
+            ImageView log4 = new ImageView(getApplicationContext());
             ViewGroup view;
             ObjectAnimator animation;
             view = (ViewGroup) findViewById(R.id.river_four);
-            iv.setImageResource(R.drawable.log);
-            view.addView(iv);
-            animation = ObjectAnimator.ofFloat(iv, "translationX", 2500f, 1);
+            log4.setImageResource(R.drawable.log);
+            view.addView(log4);
+            animation = ObjectAnimator.ofFloat(log4, "translationX", 2500f, 1);
             animation.setDuration(10000);
             animation.start();
             handler.postDelayed(riverFour, 1500);
         }
     };
+
+
 
     public void finish() {
         Intent intent = new Intent(this, MainActivity5.class);
