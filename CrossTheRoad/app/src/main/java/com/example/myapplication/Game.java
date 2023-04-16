@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.app.Notification;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -51,8 +54,18 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        drawUPS(canvas);
+        drawBackground(canvas);
     }
+
+    public void drawBackground(Canvas canvas) {
+        // Convert the background PNG into a bitmap
+        Bitmap background = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+        Paint paint = new Paint();
+        int color = ContextCompat.getColor(context, R.color.background_color);
+        paint.setColor(color);
+        canvas.drawBitmap(background,0,0,paint);
+    }
+
 
     public void drawUPS(Canvas canvas) {
         String averageUPS = Double.toString(gameLoop.getAverageUPS());

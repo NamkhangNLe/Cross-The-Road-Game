@@ -33,7 +33,7 @@ public class GameLoop extends Thread {
             try {
                 canvas = surfaceHolder.lockCanvas();
                 game.update();
-                game.drawUPS(canvas);
+                game.drawBackground(canvas);
                 surfaceHolder.unlockCanvasAndPost(canvas);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
