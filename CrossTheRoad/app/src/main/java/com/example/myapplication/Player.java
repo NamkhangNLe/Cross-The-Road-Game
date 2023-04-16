@@ -129,7 +129,6 @@ public class Player {
             alive = false;
         }
     }
-
     public boolean checkGameWin() {
         if (yPos == 11) {
             if (xPos == 1 || xPos == 3 || xPos == 5 || xPos == 7 || xPos == 9) {
@@ -137,6 +136,11 @@ public class Player {
             }
         }
         return false;
+    public void touchedWater() {
+        lives--;
+        if (lives == 0) {
+            alive = false;
+        }
     }
 
     public void setRowHasBeenTraveledOn(int row, boolean hasBeenTraveledOn) {

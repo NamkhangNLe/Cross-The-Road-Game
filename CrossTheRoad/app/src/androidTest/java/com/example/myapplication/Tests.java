@@ -320,6 +320,7 @@ public class Tests {
         }
     }
 
+    //Sprint 4 Unit Tests
     /**
      * @author Keller Smith
      * Verifies that the hit by car function makes you lose a life.
@@ -345,5 +346,147 @@ public class Tests {
         assertFalse(testPlayer.getAlive());
     }
 
+    /**
+     * @author Patrick Kim
+     * Checks that the player's X position is reset correctly.
+     */
+    @Test
+    public void testXResetPosition() {
+        Player testPlayer = new Player();
+        int initialXPos = testPlayer.getxPos();
 
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialXPos, testPlayer.getxPos());
+    }
+
+    /**
+     * @author Patrick Kim
+     * Checks that the player's Y position is reset correctly.
+     */
+    @Test
+    public void testYResetPosition() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialYPos, testPlayer.getyPos());
+    }
+
+    /**
+     * @author Rushda Umrani
+     * Checks if hitting water reduces lives by 1.
+     */
+    @Test
+    public void waterRemoveLife() {
+        Player testPlayer = new Player(5, "Bob");
+        testPlayer.touchedWater();
+        assertEquals(4, testPlayer.getLives());
+    }
+
+    /**
+     * @author Rushda Umrani
+     * Checks if score does not change after hitting a car.
+     */
+    @Test
+    public void hitByCarNoScoreChange() {
+        Player testPlayer = new Player();
+        int initScore = testPlayer.getScore();
+        testPlayer.hitByCar();
+        assertEquals(initScore, testPlayer.getScore());
+    }
+
+    /**
+     * @author Amanda Janusz
+     * Verifies that hitting a car decrements lives.
+     */
+    @Test
+    public void carDecrementsLives() {
+        Player testPlayer = new Player(5, "Bob");
+        for (int i = 0; i < 5; i++) {
+            int currLives = testPlayer.getLives();
+            testPlayer.hitByCar();
+            assertTrue(testPlayer.getLives() < currLives);
+        }
+    }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that hitting water decrements lives.
+     */
+
+    @Test
+    public void waterDecrementsLives() {
+        Player testPlayer = new Player(5, "Bob");
+        for (int i = 0; i < 5; i++) {
+            int currLives = testPlayer.getLives();
+            testPlayer.touchedWater();
+            assertTrue(testPlayer.getLives() < currLives);
+        }
+    }
+
+     /**
+     * @author Ben Steele
+     * Checks if score does not change after touching water.
+     */
+    @Test
+    public void touchedWaterNoScoreChange() {
+        Player testPlayer = new Player();
+        int initScore = testPlayer.getScore();
+        testPlayer.touchedWater();
+        assertEquals(initScore, testPlayer.getScore());
+    }
+
+    /**
+     * @author Ben Steele
+     * Checks that the player's Y position is reset correctly.
+     */
+    @Test
+    public void testResetPosition() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(initialYPos, testPlayer.getyPos());
+    }
+
+    /**
+     * @author Namkhang Le
+     * Verifies that the hit by car function makes you lose your score.
+     */
+    @Test
+    public void testLossOfScore() {
+        Player testPlayer = new Player(5, "Bob");
+        testPlayer.hitByCar();
+        testPlayer.hitByCar();
+        assertEquals(testPlayer.getScore(), 0);
+    }
+
+    /**
+     * @author Namkhang Le
+     * Makes sure no score change on reset position
+     */
+    @Test
+    public void scoreResetPosition() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+
+        testPlayer.moveUp();
+        testPlayer.moveUp();
+
+        testPlayer.resetPosition();
+
+        assertEquals(30, testPlayer.getScore());
+    }
 }
