@@ -153,7 +153,7 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveLeft(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
-        getYPosHelper();
+        mouseEntersWater();
         if (mouse.getxPos() != 0) {
             float move = characterSprite.getHeight();
             characterSprite.setX(characterSprite.getX() - move);
@@ -169,7 +169,7 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveRight(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(90);
-        getYPosHelper();
+        mouseEntersWater();
         if (mouse.getxPos() != 9) {
             float move = characterSprite.getHeight();
             characterSprite.setX((characterSprite.getX() + move));
@@ -186,7 +186,7 @@ public class MainActivity4 extends AppCompatActivity {
     /**
      * getYPos helper method for reducing large method code smell.
      */
-    private void getYPosHelper() {
+    private void mouseEntersWater() {
         if (mouse.getyPos() == 7
                 || mouse.getyPos() == 8
                 || mouse.getyPos() == 9
