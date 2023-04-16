@@ -1,20 +1,22 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+
 
 /**
  * MainActivityPrime is the entry point to our game.
  */
-public class MainActivityPrime extends Activity {
+public class MainActivityPrime extends AppCompatActivity {
     private Game game;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main_prime);
 
         //Set window to fullscreen
         Window window = getWindow();
@@ -27,4 +29,6 @@ public class MainActivityPrime extends Activity {
         game = new Game(this);
         setContentView(game);
     }
+
+
 }

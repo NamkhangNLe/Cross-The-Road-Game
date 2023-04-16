@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.view.SurfaceHolder;
 
 public class GameLoop {
+    private boolean isRunning = false;
     public GameLoop(Game game, SurfaceHolder surfaceHolder) {
     }
 
@@ -11,6 +12,7 @@ public class GameLoop {
     }
 
     public void startLoop() {
-
+        isRunning = true;
+        start();
     }
 }
