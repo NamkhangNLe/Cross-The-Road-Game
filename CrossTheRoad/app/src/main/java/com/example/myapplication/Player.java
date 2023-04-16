@@ -136,6 +136,7 @@ public class Player {
             }
         }
         return false;
+    }
     public void touchedWater() {
         lives--;
         if (lives == 0) {
