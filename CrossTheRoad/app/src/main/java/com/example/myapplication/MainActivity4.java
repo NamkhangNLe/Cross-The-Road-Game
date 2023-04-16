@@ -91,7 +91,6 @@ public class MainActivity4 extends AppCompatActivity {
             mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
-
             if (mouse.getLives() > 0) {
                 float xMove = characterSprite.getWidth();
                 characterSprite.setX(xMove * 5);
@@ -117,6 +116,9 @@ public class MainActivity4 extends AppCompatActivity {
             float move = characterSprite.getHeight();
             characterSprite.setY(characterSprite.getY() - move);
             mouse.moveUp();
+            if (mouse.checkGameWin()) {
+                win();
+            }
         }
 
         TextView scoreDisplay = findViewById(R.id.scoreDisplay);
@@ -126,11 +128,10 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveDown(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(180);
-
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+        if (mouse.getyPos() == 8
+                || mouse.getyPos() == 9
+                || mouse.getyPos() == 10
+                || mouse.getyPos() == 11) {
             mouse.touchedWater();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -153,10 +154,10 @@ public class MainActivity4 extends AppCompatActivity {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
 
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
+        if (mouse.getyPos() == 7
                 || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+                || mouse.getyPos() == 9
+                || mouse.getyPos() == 10) {
             mouse.removeLife();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -170,6 +171,9 @@ public class MainActivity4 extends AppCompatActivity {
             float move = characterSprite.getHeight();
             characterSprite.setX(characterSprite.getX() - move);
             mouse.moveLeft();
+            if (mouse.checkGameWin()) {
+                win();
+            }
         }
 
         TextView scoreDisplay = findViewById(R.id.scoreDisplay);
@@ -179,10 +183,10 @@ public class MainActivity4 extends AppCompatActivity {
         //Rotate the mouse.
         characterSprite.setRotation(90);
 
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
+        if (mouse.getyPos() == 7
                 || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+                || mouse.getyPos() == 9
+                || mouse.getyPos() == 10) {
             mouse.removeLife();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -196,6 +200,9 @@ public class MainActivity4 extends AppCompatActivity {
             float move = characterSprite.getHeight();
             characterSprite.setX((characterSprite.getX() + move));
             mouse.moveRight();
+            if (mouse.checkGameWin()) {
+                win();
+            }
         }
 
         TextView scoreDisplay = findViewById(R.id.scoreDisplay);
@@ -244,7 +251,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0) {
+                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -294,7 +301,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0) {
+                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -344,7 +351,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0) {
+                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -394,7 +401,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0) {
+                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -444,7 +451,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0) {
+                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -473,6 +480,14 @@ public class MainActivity4 extends AppCompatActivity {
     public void finish() {
         Intent intent = new Intent(this, MainActivity5.class);
         intent.putExtra("score", Integer.toString(mouse.getScore()));
+        startActivity(intent);
+    }
+
+    public void win() {
+        mouse.setGameWin(true);
+        mouse.setScore((mouse.getScore() + 500));
+        Intent intent = new Intent(this, Main7Activity.class);
+        intent.putExtra("score", Integer.toString((mouse.getScore())));
         startActivity(intent);
     }
 }
