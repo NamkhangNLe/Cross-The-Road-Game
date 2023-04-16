@@ -49,7 +49,7 @@ public class MainActivity3 extends AppCompatActivity {
             character = prev.getStringExtra("character");
             difficulty = prev.getStringExtra("difficulty");
 
-            Intent intent = new Intent(this, MainActivity4.class);
+            Intent intent = new Intent(this, MainActivityPrime.class);
             intent.putExtra("character", character);
             intent.putExtra("difficulty", difficulty);
             intent.putExtra("name", name);
