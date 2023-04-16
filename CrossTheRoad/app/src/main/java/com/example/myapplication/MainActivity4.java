@@ -153,20 +153,7 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveLeft(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
-
-        if (mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9
-                || mouse.getyPos() == 10) {
-            mouse.removeLife();
-            if (mouse.getLives() == 0) {
-                mouse.setAlive(false);
-                gameOver();
-                finish();
-            }
-            TextView livesDisplay = findViewById(R.id.livesDisplay);
-            livesDisplay.setText(Integer.toString(mouse.getLives()));
-        }
+        getYPosHelper();
         if (mouse.getxPos() != 0) {
             float move = characterSprite.getHeight();
             characterSprite.setX(characterSprite.getX() - move);
@@ -182,20 +169,7 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveRight(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(90);
-
-        if (mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9
-                || mouse.getyPos() == 10) {
-            mouse.removeLife();
-            if (mouse.getLives() == 0) {
-                mouse.setAlive(false);
-                gameOver();
-                finish();
-            }
-            TextView livesDisplay = findViewById(R.id.livesDisplay);
-            livesDisplay.setText(Integer.toString(mouse.getLives()));
-        }
+        getYPosHelper();
         if (mouse.getxPos() != 9) {
             float move = characterSprite.getHeight();
             characterSprite.setX((characterSprite.getX() + move));
@@ -209,6 +183,24 @@ public class MainActivity4 extends AppCompatActivity {
         scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
 
+    /**
+     * getYPos helper method for reducing large method code smell.
+     */
+    private void getYPosHelper() {
+        if (mouse.getyPos() == 7
+                || mouse.getyPos() == 8
+                || mouse.getyPos() == 9
+                || mouse.getyPos() == 10) {
+            mouse.removeLife();
+            if (mouse.getLives() == 0) {
+                mouse.setAlive(false);
+                gameOver();
+                finish();
+            }
+            TextView livesDisplay = findViewById(R.id.livesDisplay);
+            livesDisplay.setText(Integer.toString(mouse.getLives()));
+        }
+    }
     public void gameOver() {
         gameOver = true;
 
