@@ -84,10 +84,10 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveUp(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(0);
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
+        if (mouse.getyPos() == 7
                 || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+                || mouse.getyPos() == 9
+                || mouse.getyPos() == 10) {
             mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
@@ -215,6 +215,10 @@ public class MainActivity4 extends AppCompatActivity {
         roadThree.run();
         roadFour.run();
         roadFive.run();
+        riverOne.run();
+        riverTwo.run();
+        riverThree.run();
+        riverFour.run();
     }
     private Runnable roadOne = new Runnable() {
         @Override
@@ -280,15 +284,19 @@ public class MainActivity4 extends AppCompatActivity {
             iv.setImageResource(R.drawable.knife_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
-            animation.setDuration(10000);
+            animation.setDuration(5000);
             animation.start();
-            handler.postDelayed(roadTwo, 8000);
+            handler.postDelayed(roadTwo, 5000);
 
+            //Detect collision between the mouse and the vehicle.
             Rect rc1 = new Rect();
             characterSprite.getDrawingRect(rc1);
             Rect rc2 = new Rect();
             view.getDrawingRect(rc2);
+
+            //Detects collision and does subsequent actions.
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 2) {
+                //Remove a life.
                 mouse.hitByCar();
                 TextView livesDisplay = findViewById(R.id.livesDisplay);
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
@@ -314,7 +322,7 @@ public class MainActivity4 extends AppCompatActivity {
                     //Go to GameOver Screen.
                     //This is a placeholder method for now that simply goes back to the previous
                     // screen.
-                    handler.removeCallbacks(roadTwo);
+                    handler.removeCallbacks(roadOne);
                     finish();
                 }
             }
@@ -330,7 +338,7 @@ public class MainActivity4 extends AppCompatActivity {
             iv.setImageResource(R.drawable.rollingpin_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
-            animation.setDuration(1000);
+            animation.setDuration(10000);
             animation.start();
             handler.postDelayed(roadThree, 2000);
 
@@ -470,6 +478,71 @@ public class MainActivity4 extends AppCompatActivity {
             }
         }
     };
+
+    private Runnable riverOne = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_one);
+            iv.setImageResource(R.drawable.log);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
+            animation.setDuration(10000);
+            animation.start();
+            handler.postDelayed(riverOne, 3000);
+        }
+    };
+
+    private Runnable riverTwo = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_two);
+            iv.setImageResource(R.drawable.log);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f, 1);
+            animation.setDuration(10000);
+            animation.start();
+            handler.postDelayed(riverTwo, 2500);
+        }
+    };
+
+    private Runnable riverThree = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_three);
+            iv.setImageResource(R.drawable.log);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 3000f);
+            animation.setDuration(10000);
+            animation.start();
+            handler.postDelayed(riverThree, 2800);
+        }
+    };
+
+    private Runnable riverFour = new Runnable() {
+        @Override
+        public void run() {
+            ImageView iv = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_four);
+            iv.setImageResource(R.drawable.log);
+            view.addView(iv);
+            animation = ObjectAnimator.ofFloat(iv, "translationX", 2500f, 1);
+            animation.setDuration(10000);
+            animation.start();
+            handler.postDelayed(riverFour, 1500);
+        }
+    };
+
     public void finish() {
         Intent intent = new Intent(this, MainActivity5.class);
         intent.putExtra("score", Integer.toString(mouse.getScore()));

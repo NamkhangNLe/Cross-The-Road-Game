@@ -182,20 +182,20 @@ public class Tests {
      * @author Ben Steele
      * Ensures the vehicles speed is properly set
      */
-    @Test
-    public void testVehicleSpeed() {
-        Vehicle testVehicle = new Vehicle(5,"1",true);
-        assertEquals(testVehicle.getSpeed(), 5);
-    }
-    /**
-     * @author Ben Steele
-     * Ensures that the inputted vehicle type matches the input value
-     */
-    @Test
-    public void testVehicleType() {
-        Vehicle testVehicle = new Vehicle(5,"1",true);
-        assertEquals(testVehicle.getType(), "1");
-    }
+//    @Test
+//    public void testVehicleSpeed() {
+//        Vehicle testVehicle = new Vehicle(5,"1",true);
+//        assertEquals(testVehicle.getSpeed(), 5);
+//    }
+//    /**
+//     * @author Ben Steele
+//     * Ensures that the inputted vehicle type matches the input value
+//     */
+//    @Test
+//    public void testVehicleType() {
+//        Vehicle testVehicle = new Vehicle(5,"1",true);
+//        assertEquals(testVehicle.getType(), "1");
+//    }
 
     /**
      * @author Patrick Kim
@@ -247,11 +247,11 @@ public class Tests {
      * @author Rushda Umrani
      * Checks that the vehicle direction is properly set
      */
-    @Test
-    public void testVehicleDirection() {
-        Vehicle testVehicle = new Vehicle(5,"1",true);
-        assertTrue(testVehicle.getDirection());
-    }
+//    @Test
+//    public void testVehicleDirection() {
+//        Vehicle testVehicle = new Vehicle(5,"1",true);
+//        assertTrue(testVehicle.getDirection());
+//    }
 
     /**
      * @author Rushda Umrani

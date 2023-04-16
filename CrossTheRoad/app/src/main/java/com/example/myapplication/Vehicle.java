@@ -8,15 +8,18 @@ public class Vehicle {
     private boolean direction;
     private ImageView sprite;
     private int id;
+    private int xPos;
+    private int yPos;
 
-    public Vehicle(int speed, String type, boolean direction) {
+    public Vehicle(int speed, int xPos, int yPos) {
         this.speed = speed;
-        this.type = type;
-        this.direction = direction;
+        this.xPos = xPos;
+        this.yPos = yPos;
     }
 
     //Determines how fast and in which direction the vehicle moves.
     public void move() {
+
 
     }
 
