@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -27,7 +28,7 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
         surfaceHolder.addCallback(this);
 
         this.context = context;
-        GameLoop gameLoop = new GameLoop(this, surfaceHolder);
+        gameLoop = new GameLoop(this, surfaceHolder);
 
         setFocusable(true);
     }
@@ -57,6 +58,12 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
         String averageUPS = Double.toString(gameLoop.getAverageUPS());
         Paint paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.background_color);
-        canvas.drawText("UPS: " + averageUPS, 100, 20, paint);
+        paint.setColor(color);
+        Rect r = new Rect(10,10,50,50);
+        canvas.drawRect(r, paint);
+    }
+
+    public void update() {
+        // Update game state
     }
 }
