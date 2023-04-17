@@ -10,6 +10,9 @@ public class Player {
     private boolean alive;
 
     private boolean riding;
+    public boolean isAnimate = false;
+    public float aX;
+    public float aY;
 
     public Player(int lives, String name) {
         this.riding = false;
