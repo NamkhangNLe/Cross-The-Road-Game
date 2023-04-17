@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".Main7Activity">
+
+    <TextView
+        android:layout_width="389dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="256dp"
+        android:text="@string/you_win"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="15pt"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/displayFinalScore"
+        android:layout_width="389dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="100dp"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="30pt"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="389dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="350dp"
+        android:text="@string/restartText"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/restartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="403dp"
+        android:backgroundTint="#8ABDE3"
+        android:onClick="charSelect"
+        android:text="@string/restart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="500dp"
+        android:backgroundTint="#8ABDE3"
+        android:onClick="exitGame"
+        android:text="@string/exit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
