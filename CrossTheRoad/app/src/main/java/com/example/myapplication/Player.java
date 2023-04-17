@@ -6,12 +6,16 @@ public class Player {
     private int xPos;
     private int yPos;
     private int score;
-    private boolean gameWin;
     private boolean[] rowHasBeenTraveledOn = new boolean[12];
     private boolean alive;
 
+    private boolean riding;
+    public boolean isAnimate = false;
+    public float aX;
+    public float aY;
 
     public Player(int lives, String name) {
+        this.riding = false;
         this.lives = lives;
         this.name = name;
         this.score = 0;
@@ -19,7 +23,6 @@ public class Player {
         yPos = 0;
         rowHasBeenTraveledOn[0] = true;
         this.alive = true;
-        this.gameWin = false;
     }
 
     public Player() {
@@ -129,14 +132,7 @@ public class Player {
             alive = false;
         }
     }
-    public boolean checkGameWin() {
-        if (yPos == 11) {
-            if (xPos == 1 || xPos == 3 || xPos == 5 || xPos == 7 || xPos == 9) {
-                return true;
-            }
-        }
-        return false;
-    }
+
     public void touchedWater() {
         lives--;
         if (lives == 0) {
@@ -154,7 +150,9 @@ public class Player {
     public boolean getAlive() {
         return this.alive;
     }
-    public void setGameWin(boolean gameWin) { this.gameWin = gameWin; }
-    public boolean isGameWin() { return this.gameWin; }
+
+    public boolean getRiding() {return this.riding;}
+
+    public void setRiding(boolean riding) {this.riding = riding;}
 
 }

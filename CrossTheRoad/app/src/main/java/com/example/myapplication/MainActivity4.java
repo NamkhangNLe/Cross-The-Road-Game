@@ -4,9 +4,12 @@ package com.example.myapplication;
 //import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.animation.ObjectAnimator;
@@ -21,6 +24,7 @@ public class MainActivity4 extends AppCompatActivity {
     private Handler handler;
     private Player mouse = new Player();
     private ImageView characterSprite;
+    private Drawable correctSprite;
     /**
      * on Create.
      * @param savedInstanceState savedInstanceState
@@ -71,23 +75,31 @@ public class MainActivity4 extends AppCompatActivity {
         if (character.equals("char1")) {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
                     R.drawable.mouse, null));
+            correctSprite = getResources().getDrawable(R.drawable.mouse);
         } else if (character.equals("char2")) {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
                     R.drawable.rat, null));
+            correctSprite = getResources().getDrawable(R.drawable.rat);
         } else {
             characterSprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
                     R.drawable.remy, null));
+            correctSprite = getResources().getDrawable(R.drawable.remy);
         }
         runVehicles();
     }
 
     public void moveUp(View view) {
-        //Rotate the mouse.
+        if (mouse.isAnimate) {
+            characterSprite.setX(characterSprite.getX());
+            characterSprite.setY(characterSprite.getY());
+        }
         characterSprite.setRotation(0);
-        if (mouse.getyPos() == 6
-                || mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9) {
+        if (mouse.getyPos() != 11) {
+            float move = characterSprite.getHeight();
+            characterSprite.setY(characterSprite.getY() - move);
+            mouse.moveUp();
+        }
+        if (mouse.getyPos() > 6 && mouse.getRiding() == false && mouse.getyPos() < 11) {
             mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
@@ -96,12 +108,8 @@ public class MainActivity4 extends AppCompatActivity {
                 characterSprite.setX(xMove * 5);
                 float yMove = characterSprite.getHeight();
                 characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
-
-                //Reset the mouse's position.
                 mouse.resetPosition();
                 characterSprite.setRotation(0);
-
-                //Reset the score to 0.
                 mouse.setScore(0);
                 TextView scoreDisplay = findViewById(R.id.scoreDisplay);
                 int score = mouse.getScore();
@@ -112,26 +120,22 @@ public class MainActivity4 extends AppCompatActivity {
                 finish();
             }
         }
-        if (mouse.getyPos() != 11) {
-            float move = characterSprite.getHeight();
-            characterSprite.setY(characterSprite.getY() - move);
-            mouse.moveUp();
-            if (mouse.checkGameWin()) {
-                win();
-            }
-        }
-
         TextView scoreDisplay = findViewById(R.id.scoreDisplay);
         scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
 
     public void moveDown(View view) {
+        if (mouse.isAnimate) {
+            characterSprite = findViewById(R.id.charSprite);
+            characterSprite.setImageDrawable(correctSprite);
+            characterSprite.setX(mouse.aX);
+            characterSprite.setY(mouse.aY);
+            mouse.isAnimate = false;
+        }
         //Rotate the mouse.
         characterSprite.setRotation(180);
-        if (mouse.getyPos() == 8
-                || mouse.getyPos() == 9
-                || mouse.getyPos() == 10
-                || mouse.getyPos() == 11) {
+
+        if (mouse.getyPos() > 5 && mouse.getRiding() == false) {
             mouse.touchedWater();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -153,44 +157,8 @@ public class MainActivity4 extends AppCompatActivity {
     public void moveLeft(View view) {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
-        mouseEntersWater();
-        if (mouse.getxPos() != 0) {
-            float move = characterSprite.getHeight();
-            characterSprite.setX(characterSprite.getX() - move);
-            mouse.moveLeft();
-            if (mouse.checkGameWin()) {
-                win();
-            }
-        }
 
-        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
-        scoreDisplay.setText(Integer.toString(mouse.getScore()));
-    }
-    public void moveRight(View view) {
-        //Rotate the mouse.
-        characterSprite.setRotation(90);
-        mouseEntersWater();
-        if (mouse.getxPos() != 9) {
-            float move = characterSprite.getHeight();
-            characterSprite.setX((characterSprite.getX() + move));
-            mouse.moveRight();
-            if (mouse.checkGameWin()) {
-                win();
-            }
-        }
-
-        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
-        scoreDisplay.setText(Integer.toString(mouse.getScore()));
-    }
-
-    /**
-     * getYPos helper method for reducing large method code smell.
-     */
-    private void mouseEntersWater() {
-        if (mouse.getyPos() == 7
-                || mouse.getyPos() == 8
-                || mouse.getyPos() == 9
-                || mouse.getyPos() == 10) {
+        if (mouse.getyPos() > 6 && mouse.getRiding() == false) {
             mouse.removeLife();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -200,7 +168,39 @@ public class MainActivity4 extends AppCompatActivity {
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
         }
+        if (mouse.getxPos() != 0) {
+            float move = characterSprite.getHeight();
+            characterSprite.setX(characterSprite.getX() - move);
+            mouse.moveLeft();
+        }
+
+        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+        scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
+    public void moveRight(View view) {
+        //Rotate the mouse.
+        characterSprite.setRotation(90);
+
+        if (mouse.getyPos() > 6 && mouse.getRiding() == false) {
+            mouse.removeLife();
+            if (mouse.getLives() == 0) {
+                mouse.setAlive(false);
+                gameOver();
+                finish();
+            }
+            TextView livesDisplay = findViewById(R.id.livesDisplay);
+            livesDisplay.setText(Integer.toString(mouse.getLives()));
+        }
+        if (mouse.getxPos() != 9) {
+            float move = characterSprite.getHeight();
+            characterSprite.setX((characterSprite.getX() + move));
+            mouse.moveRight();
+        }
+
+        TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+        scoreDisplay.setText(Integer.toString(mouse.getScore()));
+    }
+
     public void gameOver() {
         gameOver = true;
 
@@ -214,6 +214,11 @@ public class MainActivity4 extends AppCompatActivity {
         roadThree.run();
         roadFour.run();
         roadFive.run();
+        riverOne.run();
+        riverTwo.run();
+        riverThree.run();
+        riverFour.run();
+
     }
     private Runnable roadOne = new Runnable() {
         @Override
@@ -226,6 +231,7 @@ public class MainActivity4 extends AppCompatActivity {
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
             animation.setDuration(5000);
+            animation.setInterpolator(new LinearInterpolator());
             animation.start();
             handler.postDelayed(roadOne, 2000);
 
@@ -243,7 +249,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
+                if (mouse.getLives() > 0) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -279,21 +285,26 @@ public class MainActivity4 extends AppCompatActivity {
             iv.setImageResource(R.drawable.knife_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
-            animation.setDuration(10000);
+            animation.setDuration(5000);
+            animation.setInterpolator(new LinearInterpolator());
             animation.start();
-            handler.postDelayed(roadTwo, 8000);
+            handler.postDelayed(roadTwo, 5000);
 
+            //Detect collision between the mouse and the vehicle.
             Rect rc1 = new Rect();
             characterSprite.getDrawingRect(rc1);
             Rect rc2 = new Rect();
             view.getDrawingRect(rc2);
+
+            //Detects collision and does subsequent actions.
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 2) {
+                //Remove a life.
                 mouse.hitByCar();
                 TextView livesDisplay = findViewById(R.id.livesDisplay);
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
+                if (mouse.getLives() > 0) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -313,7 +324,7 @@ public class MainActivity4 extends AppCompatActivity {
                     //Go to GameOver Screen.
                     //This is a placeholder method for now that simply goes back to the previous
                     // screen.
-                    handler.removeCallbacks(roadTwo);
+                    handler.removeCallbacks(roadOne);
                     finish();
                 }
             }
@@ -329,7 +340,8 @@ public class MainActivity4 extends AppCompatActivity {
             iv.setImageResource(R.drawable.rollingpin_obstacle);
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
-            animation.setDuration(1000);
+            animation.setDuration(10000);
+            animation.setInterpolator(new LinearInterpolator());
             animation.start();
             handler.postDelayed(roadThree, 2000);
 
@@ -343,7 +355,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
+                if (mouse.getLives() > 0) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -380,6 +392,7 @@ public class MainActivity4 extends AppCompatActivity {
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f, 1);
             animation.setDuration(6000);
+            animation.setInterpolator(new LinearInterpolator());
             animation.start();
             handler.postDelayed(roadFour, 3000);
 
@@ -393,7 +406,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
+                if (mouse.getLives() > 0) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -430,6 +443,7 @@ public class MainActivity4 extends AppCompatActivity {
             view.addView(iv);
             animation = ObjectAnimator.ofFloat(iv, "translationX", 2000f);
             animation.setDuration(8000);
+            animation.setInterpolator(new LinearInterpolator());
             animation.start();
             handler.postDelayed(roadFive, 4000);
 
@@ -443,7 +457,7 @@ public class MainActivity4 extends AppCompatActivity {
                 livesDisplay.setText(Integer.toString(mouse.getLives()));
 
                 //Reset the mouse to the start.
-                if (mouse.getLives() > 0 && !mouse.isGameWin()) {
+                if (mouse.getLives() > 0) {
                     float xMove = characterSprite.getWidth();
                     characterSprite.setX(xMove * 5);
                     float yMove = characterSprite.getHeight();
@@ -469,17 +483,154 @@ public class MainActivity4 extends AppCompatActivity {
             }
         }
     };
+
+    private Runnable riverOne = new Runnable() {
+        @Override
+        public void run() {
+            ImageView log1 = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator playerAnimation = null;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_one);
+            log1.setImageResource(R.drawable.log);
+            view.addView(log1);
+            animation = ObjectAnimator.ofFloat(log1, "translationX", 2000f);
+            animation.setDuration(10000);
+            animation.setInterpolator(new LinearInterpolator());
+            animation.start();
+            handler.postDelayed(riverOne, 3000);
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            /*
+            if (log1.getX() == characterSprite.getX()) {
+                mouse.setRiding(true);
+            }
+            *
+             */
+
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 7) {
+                //Remove a life.
+                mouse.setRiding(true);
+                mouse.isAnimate = true;
+                playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 2000f);
+                playerAnimation.setDuration(10000);
+                playerAnimation.setInterpolator(new LinearInterpolator());
+                playerAnimation.start();
+            }
+            if (mouse.getyPos() != 7) {
+                mouse.aX = characterSprite.getX();
+                mouse.aY = characterSprite.getY();
+            }
+        }
+    };
+
+    private Runnable riverTwo = new Runnable() {
+        @Override
+        public void run() {
+            ObjectAnimator playerAnimation;
+            ImageView log2 = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_two);
+            log2.setImageResource(R.drawable.log);
+            view.addView(log2);
+            animation = ObjectAnimator.ofFloat(log2, "translationX", 2000f, 1);
+            animation.setDuration(10000);
+            animation.setInterpolator(new LinearInterpolator());
+            animation.start();
+            handler.postDelayed(riverTwo, 2500);
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            if (log2.getX() == characterSprite.getX()) {
+                mouse.setRiding(true);
+            }
+
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 8) {
+                //Remove a life.
+                mouse.setRiding(true);
+                playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 2000f, 1);
+                playerAnimation.setDuration(10000);
+                playerAnimation.setInterpolator(new LinearInterpolator());
+                playerAnimation.start();
+            }
+        }
+    };
+
+    private Runnable riverThree = new Runnable() {
+        @Override
+        public void run() {
+            ImageView log3 = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_three);
+            log3.setImageResource(R.drawable.log);
+            view.addView(log3);
+            animation = ObjectAnimator.ofFloat(log3, "translationX", 3000f);
+            animation.setDuration(10000);
+            animation.setInterpolator(new LinearInterpolator());
+            animation.start();
+            handler.postDelayed(riverThree, 2800);
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            if (log3.getX() == characterSprite.getX()) {
+                mouse.setRiding(true);
+            }
+
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 9) {
+                //Remove a life.
+                mouse.setRiding(true);
+                ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 3000f);
+                playerAnimation.setDuration(10000);
+                playerAnimation.setInterpolator(new LinearInterpolator());
+                playerAnimation.start();
+            }
+        }
+    };
+
+    private Runnable riverFour = new Runnable() {
+        @Override
+        public void run() {
+            ImageView log4 = new ImageView(getApplicationContext());
+            ViewGroup view;
+            ObjectAnimator animation;
+            view = (ViewGroup) findViewById(R.id.river_four);
+            log4.setImageResource(R.drawable.log);
+            view.addView(log4);
+            animation = ObjectAnimator.ofFloat(log4, "translationX", 2500f, 1);
+            animation.setDuration(10000);
+            animation.setInterpolator(new LinearInterpolator());
+            animation.start();
+            handler.postDelayed(riverFour, 1500);
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+            if (log4.getX() == characterSprite.getX()) {
+                mouse.setRiding(true);
+            }
+
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 10) {
+                //Remove a life.
+                mouse.setRiding(true);
+                ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 2000f);
+                playerAnimation.setDuration(10000);
+                playerAnimation.setInterpolator(new LinearInterpolator());
+                playerAnimation.start();
+            }
+        }
+    };
+
+
+
     public void finish() {
         Intent intent = new Intent(this, MainActivity5.class);
         intent.putExtra("score", Integer.toString(mouse.getScore()));
-        startActivity(intent);
-    }
-
-    public void win() {
-        mouse.setGameWin(true);
-        mouse.setScore((mouse.getScore() + 500));
-        Intent intent = new Intent(this, Main7Activity.class);
-        intent.putExtra("score", Integer.toString((mouse.getScore())));
         startActivity(intent);
     }
 }
