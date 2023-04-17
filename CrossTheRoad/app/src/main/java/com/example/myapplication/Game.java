@@ -8,10 +8,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -75,15 +77,23 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void drawPlayer(Canvas canvas, Player player) {
-        // Convert the mouse PNG into a bitmap
-        Bitmap playerSprite = BitmapFactory.decodeResource(getResources(), R.drawable.char_1);
         Paint paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.background_color);
         paint.setColor(color);
-        //int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-        //int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-        //canvas.drawBitmap(Bitmap.createScaledBitmap(background, width, height, false),0,0,paint);
-        canvas.drawBitmap(playerSprite, 10,10,paint);
+        canvas.drawText(player.getName(),10,10,paint);
+//        ImageView playerSprite = player.getSprite();
+//        Drawable drawable = playerSprite.getDrawable();
+//        drawable.draw(canvas);
+
+//        // Convert the mouse PNG into a bitmap
+//        Bitmap playerSprite = BitmapFactory.decodeResource(getResources(), R.drawable.char_1);
+//        Paint paint = new Paint();
+//        int color = ContextCompat.getColor(context, R.color.background_color);
+//        paint.setColor(color);
+//        //int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+//        //int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+//        //canvas.drawBitmap(Bitmap.createScaledBitmap(background, width, height, false),0,0,paint);
+//        canvas.drawBitmap(playerSprite, 10,10,paint);
     }
 
 

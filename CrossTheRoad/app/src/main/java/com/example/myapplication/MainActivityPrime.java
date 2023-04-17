@@ -31,45 +31,45 @@ public class MainActivityPrime extends AppCompatActivity {
         );
 
         // Set content view to game, so that objects in the Game class can be rendered to the screen
-        mouse = createPlayer();
+        //mouse = createPlayer();
         game = new Game(this, mouse);
         setContentView(game);
     }
 
-    /**
-     * Set up
-     */
-    private Player createPlayer() {
-        // Retrieve old variables
-        Intent prev = getIntent();
-        String name = prev.getStringExtra("name");
-        String difficulty = prev.getStringExtra("difficulty");
-        String character = prev.getStringExtra("character");
-        int lives = 0;
-        ImageView sprite = null;
-        
-        // Set the lives
-        if (difficulty.equals("Easy")) {
-            lives = 5;
-        } else if (difficulty.equals("Medium")) {
-            lives = 3;
-        } else {
-            lives = 1;
-        }
-        
-        // Set the sprite
-        if (character.equals("char1")) {
-            sprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
-                    R.drawable.mouse, null));
-        } else if (character.equals("char2")) {
-            sprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
-                    R.drawable.rat, null));
-        } else {
-            sprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
-                    R.drawable.remy, null));
-        }
-
-        Player player = new Player(lives, name, sprite);
-        return player;
-    }
+//    /**
+//     * Set up
+//     */
+//    private Player createPlayer() {
+//        // Retrieve old variables
+//        Intent prev = getIntent();
+//        String name = prev.getStringExtra("name");
+//        String difficulty = prev.getStringExtra("difficulty");
+//        String character = prev.getStringExtra("character");
+//        int lives = 0;
+//        ImageView sprite = null;
+//
+//        // Set the lives
+//        if (difficulty.equals("Easy")) {
+//            lives = 5;
+//        } else if (difficulty.equals("Medium")) {
+//            lives = 3;
+//        } else {
+//            lives = 1;
+//        }
+//
+//        // Set the sprite
+//        if (character.equals("char1")) {
+//            sprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
+//                    R.drawable.mouse, null));
+//        } else if (character.equals("char2")) {
+//            sprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
+//                    R.drawable.rat, null));
+//        } else {
+//            sprite.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
+//                    R.drawable.remy, null));
+//        }
+//
+//        Player player = new Player(lives, name, sprite);
+//        return player;
+//    }
 }
