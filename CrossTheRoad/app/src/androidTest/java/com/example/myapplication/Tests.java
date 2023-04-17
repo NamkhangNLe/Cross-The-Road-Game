@@ -621,4 +621,25 @@ public class Tests {
         player.moveRight();
         assertEquals(270, player.getScore());
     }
+
+    /**
+     * @author Namkhang Le
+     * Reaching the goal tile should give the greatest number of points test.
+     */
+    @Test
+    public void maxScoreTest() {
+        Player player = new Player(5, "Bob");
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        player.moveUp();
+        assertEquals(player.getScore(), 370);
+    }
 }
