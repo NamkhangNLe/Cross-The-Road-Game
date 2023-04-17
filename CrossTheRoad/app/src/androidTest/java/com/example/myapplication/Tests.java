@@ -642,5 +642,25 @@ public class Tests {
         player.moveUp();
         assertEquals(player.getScore(), 370);
     }
+    /**
+     * @author Namkhang Le
+     * Touching water removes life.
+     */
+    @Test
+    public void touchedWaterTest() {
+        Player player = new Player(5, "Bob");
+        player.touchedWater();
+        assertEquals(player.getLives(), 4);
+    }
 
+    /**
+     * @author Namkhang Le
+     * Succesfully loss the game
+     */
+    @Test
+    public void gameNotWonTest() {
+        Player player = new Player(5, "Bob");
+        player.checkGameWin();
+        assertFalse(player.isGameWin());
+    }
 }
