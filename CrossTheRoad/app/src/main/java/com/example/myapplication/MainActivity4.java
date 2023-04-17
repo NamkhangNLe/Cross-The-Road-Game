@@ -109,6 +109,7 @@ public class MainActivity4 extends AppCompatActivity {
             float move = characterSprite.getHeight();
             characterSprite.setY(characterSprite.getY() - move);
             mouse.moveUp();
+            mouse.setRiding(false);
         }
 
         TextView scoreDisplay = findViewById(R.id.scoreDisplay);
@@ -476,6 +477,15 @@ public class MainActivity4 extends AppCompatActivity {
             animation.setDuration(10000);
             animation.start();
             handler.postDelayed(riverOne, 3000);
+            Rect rc1 = new Rect();
+            characterSprite.getDrawingRect(rc1);
+            Rect rc2 = new Rect();
+            view.getDrawingRect(rc2);
+
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 6) {
+                //Remove a life.
+                mouse.setRiding(true);
+            }
         }
     };
 
