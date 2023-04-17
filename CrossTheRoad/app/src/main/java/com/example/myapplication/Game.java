@@ -9,6 +9,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -73,7 +76,21 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
         paint.setColor(color);
         int width = Resources.getSystem().getDisplayMetrics().widthPixels;
         int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-        canvas.drawBitmap(Bitmap.createScaledBitmap(background, width, height, false),0,0,paint);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(background, width, height - 400, false),0,400,paint);
+
+        Rect r = new Rect(0, 0, width, 400);
+        canvas.drawRect(r, paint);
+
+        String lives = "NAME" + '\n' + "Lives: " + '\n' + "Difficulty: " + '\n' + "Score: ";
+        TextPaint textPaint = new TextPaint();
+        textPaint.setAntiAlias(true);
+        textPaint.setTextSize(16 * getResources().getDisplayMetrics().density);
+        textPaint.setColor(0xFF000000);
+        int livesWidth = (int) textPaint.measureText(lives);
+
+        StaticLayout staticLayout = new StaticLayout(lives, textPaint, (int) livesWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
+
+        staticLayout.draw(canvas);
     }
 
     public void drawPlayer(Canvas canvas, Player player) {
