@@ -490,9 +490,18 @@ public class Tests {
         assertEquals(30, testPlayer.getScore());
     }
 
-
     /**
      * @author Ben Steele
-     *
+     * Checks that if you leave the log you lose a life
      */
+    @Test
+    public void leaveLog() {
+        Player testPlayer = new Player();
+        int initialYPos = testPlayer.getyPos();
+        testPlayer.setLives(1);
+        testPlayer.setRiding(true);
+        testPlayer.moveUp();
+        assertEquals(0,testPlayer.getLives());
+    }
+
 }
