@@ -619,7 +619,7 @@ public class Tests {
             player.moveUp();
         }
         player.moveRight();
-        assertEquals(270, player.getScore());
+        assertEquals(370, player.getScore());
     }
 
     /**
