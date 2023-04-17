@@ -489,4 +489,135 @@ public class Tests {
 
         assertEquals(30, testPlayer.getScore());
     }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that score is correct when player advances to row 3.
+     */
+    @Test
+    public void testScoreAtRowThree() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 3; i++) {
+            player.moveUp();
+        }
+        assertEquals(40, player.getScore());
+    }
+
+    /**
+     * @author Amanda Janusz
+     * Checks that score is correct when player advances to row 4.
+     */
+    @Test
+    public void testScoreAtRowFour() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 4; i++) {
+            player.moveUp();
+        }
+        assertEquals(60, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to row 5.
+     */
+    @Test
+    public void testScoreAtRowFive() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 5; i++) {
+            player.moveUp();
+        }
+        assertEquals(70, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to row 6.
+     */
+    @Test
+    public void testScoreAtRowSix() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 6; i++) {
+            player.moveUp();
+        }
+        assertEquals(70, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to row 5.
+     */
+    @Test
+    public void testScoreAtRowSeven() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 7; i++) {
+            player.moveUp();
+        }
+        assertEquals(120, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to row 8.
+     */
+    @Test
+    public void testScoreAtRowEight() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 8; i++) {
+            player.moveUp();
+        }
+        assertEquals(170, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to row 9.
+     */
+    @Test
+    public void testScoreAtRowNine() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 9; i++) {
+            player.moveUp();
+        }
+        assertEquals(220, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to row 10.
+     */
+    @Test
+    public void testScoreAtRowTen() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 10; i++) {
+            player.moveUp();
+        }
+        assertEquals(270, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to a win at row 11.
+     */
+    @Test
+    public void testScoreAtRowElevenWin() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 11; i++) {
+            player.moveUp();
+        }
+        assertEquals(370, player.getScore());
+    }
+
+    /**
+     * @author Your name here
+     * Checks that score is correct when player advances to a safe spot on row 11.
+     */
+    @Test
+    public void testScoreAtRowElevenSafe() {
+        Player player = new Player(3, "Remy");
+        for (int i = 0; i < 11; i++) {
+            player.moveUp();
+        }
+        player.moveRight();
+        assertEquals(270, player.getScore());
+    }
 }
