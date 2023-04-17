@@ -10,9 +10,9 @@ public class Player {
     private boolean alive;
     private boolean gameWin;
     private boolean riding;
-    public boolean isAnimate = false;
-    public float aX;
-    public float aY;
+    private boolean isAnimate = false;
+    private float aX;
+    private float aY;
 
     public Player(int lives, String name) {
         this.riding = false;
@@ -46,8 +46,12 @@ public class Player {
 
         this.updateScore();
     }
-    public void setGameWin(boolean gameWin) { this.gameWin = gameWin; }
-    public boolean isGameWin() { return this.gameWin; }
+    public void setGameWin(boolean gameWin) {
+        this.gameWin = gameWin;
+    }
+    public boolean isGameWin() {
+        return this.gameWin;
+    }
     public void moveDown() {
         if (yPos != 0) {
             yPos = yPos - 1;
@@ -162,8 +166,36 @@ public class Player {
         return this.alive;
     }
 
-    public boolean getRiding() {return this.riding;}
+    public boolean getRiding() {
+        return this.riding;
+    }
 
-    public void setRiding(boolean riding) {this.riding = riding;}
+    public void setRiding(boolean riding) {
+        this.riding = riding;
+    }
+
+    public boolean getIsAnimate() {
+        return this.isAnimate;
+    }
+
+    public void setIsAnimate(boolean isAnimate) {
+        this.isAnimate = isAnimate;
+    }
+
+    public float getaX() {
+        return this.aX;
+    }
+
+    public void setaX(float aX) {
+        this.aX = aX;
+    }
+
+    public float getaY() {
+        return this.aY;
+    }
+
+    public void setaY(float aY) {
+        this.aY = aY;
+    }
 
 }

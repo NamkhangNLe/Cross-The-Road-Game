@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
@@ -90,7 +89,7 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     public void moveUp(View view) {
-        if (mouse.isAnimate) {
+        if (mouse.getIsAnimate()) {
             characterSprite.setX(characterSprite.getX());
             characterSprite.setY(characterSprite.getY());
         }
@@ -103,7 +102,7 @@ public class MainActivity4 extends AppCompatActivity {
                 win();
             }
         }
-        if (mouse.getyPos() > 6 && mouse.getRiding() == false && mouse.getyPos() < 11) {
+        if (mouse.getyPos() > 6 && !mouse.getRiding() && mouse.getyPos() < 11) {
             mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
@@ -130,13 +129,17 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     public void moveDown(View view) {
-        if (mouse.isAnimate) {
-            characterSprite.clearAnimation();
+        if (mouse.getIsAnimate()) {
+            characterSprite = findViewById(R.id.charSprite);
+            characterSprite.setImageDrawable(correctSprite);
+            characterSprite.setX(mouse.getaX());
+            characterSprite.setY(mouse.getaY());
+            mouse.setIsAnimate(false);
         }
         //Rotate the mouse.
         characterSprite.setRotation(180);
 
-        if (mouse.getyPos() > 5 && mouse.getRiding() == false) {
+        if (mouse.getyPos() > 5 && !mouse.getRiding()) {
             mouse.touchedWater();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -159,7 +162,7 @@ public class MainActivity4 extends AppCompatActivity {
         //Rotate the mouse.
         characterSprite.setRotation(-90);
 
-        if (mouse.getyPos() > 6 && mouse.getRiding() == false) {
+        if (mouse.getyPos() > 6 && !mouse.getRiding()) {
             mouse.removeLife();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -185,7 +188,7 @@ public class MainActivity4 extends AppCompatActivity {
         //Rotate the mouse.
         characterSprite.setRotation(90);
 
-        if (mouse.getyPos() > 6 && mouse.getRiding() == false) {
+        if (mouse.getyPos() > 6 && !mouse.getRiding()) {
             mouse.removeLife();
             if (mouse.getLives() == 0) {
                 mouse.setAlive(false);
@@ -513,7 +516,7 @@ public class MainActivity4 extends AppCompatActivity {
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 7) {
                 //Remove a life.
                 mouse.setRiding(true);
-                mouse.isAnimate = true;
+                mouse.setIsAnimate(true);
                 playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 2000f);
                 playerAnimation.setDuration(10000);
                 playerAnimation.setInterpolator(new LinearInterpolator());
@@ -522,8 +525,8 @@ public class MainActivity4 extends AppCompatActivity {
                 mouse.setRiding(false);
             }
             if (mouse.getyPos() != 7) {
-                mouse.aX = characterSprite.getX();
-                mouse.aY = characterSprite.getY();
+                mouse.setaX(characterSprite.getX());
+                mouse.setaY(characterSprite.getY());
             }
             int[] location = new int[2];
             characterSprite.getLocationOnScreen(location);
@@ -613,7 +616,8 @@ public class MainActivity4 extends AppCompatActivity {
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 9) {
                 //Remove a life.
                 mouse.setRiding(true);
-                ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 3000f);
+                ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(characterSprite,
+                        "translationX", 3000f);
                 playerAnimation.setDuration(10000);
                 playerAnimation.setInterpolator(new LinearInterpolator());
                 playerAnimation.start();
@@ -646,7 +650,8 @@ public class MainActivity4 extends AppCompatActivity {
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 10) {
                 //Remove a life.
                 mouse.setRiding(true);
-                ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 2000f);
+                ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(characterSprite,
+                        "translationX", 2000f);
                 playerAnimation.setDuration(10000);
                 playerAnimation.setInterpolator(new LinearInterpolator());
                 playerAnimation.start();
