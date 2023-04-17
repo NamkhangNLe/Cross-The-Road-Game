@@ -490,6 +490,7 @@ public class Tests {
         assertEquals(30, testPlayer.getScore());
     }
 
+    // Unit Test for Sprint 5
     /**
      * @author Amanda Janusz
      * Checks that score is correct when player advances to row 3.
