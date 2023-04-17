@@ -518,7 +518,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Patrick Kim
      * Checks that score is correct when player advances to row 5.
      */
     @Test
@@ -531,7 +531,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Patrick Kim
      * Checks that score is correct when player advances to row 6.
      */
     @Test
@@ -544,7 +544,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Keller Smith
      * Checks that score is correct when player advances to row 5.
      */
     @Test
@@ -557,7 +557,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Keller Smith
      * Checks that score is correct when player advances to row 8.
      */
     @Test
@@ -570,7 +570,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Rushda Umrani
      * Checks that score is correct when player advances to row 9.
      */
     @Test
@@ -583,7 +583,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Rushda Umrani
      * Checks that score is correct when player advances to row 10.
      */
     @Test
@@ -596,7 +596,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Ben Steele
      * Checks that score is correct when player advances to a win at row 11.
      */
     @Test
@@ -609,7 +609,7 @@ public class Tests {
     }
 
     /**
-     * @author Your name here
+     * @author Ben Steele
      * Checks that score is correct when player advances to a safe spot on row 11.
      */
     @Test
