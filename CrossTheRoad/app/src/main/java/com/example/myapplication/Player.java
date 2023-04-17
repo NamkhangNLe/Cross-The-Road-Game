@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import android.graphics.Canvas;
+import android.widget.ImageView;
+
 public class Player {
     private String name;
     private int lives;
@@ -9,9 +12,10 @@ public class Player {
     private boolean gameWin;
     private boolean[] rowHasBeenTraveledOn = new boolean[12];
     private boolean alive;
+    private ImageView sprite;
 
 
-    public Player(int lives, String name) {
+    public Player(int lives, String name, ImageView sprite) {
         this.lives = lives;
         this.name = name;
         this.score = 0;
@@ -20,6 +24,7 @@ public class Player {
         rowHasBeenTraveledOn[0] = true;
         this.alive = true;
         this.gameWin = false;
+        this.sprite = sprite;
     }
 
     public Player() {
@@ -157,4 +162,10 @@ public class Player {
     public void setGameWin(boolean gameWin) { this.gameWin = gameWin; }
     public boolean isGameWin() { return this.gameWin; }
 
+    public void update() {
+    }
+
+    public ImageView getSprite() {
+        return this.sprite;
+    }
 }

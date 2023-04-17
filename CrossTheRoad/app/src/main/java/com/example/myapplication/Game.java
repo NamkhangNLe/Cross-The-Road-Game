@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Notification;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -22,8 +23,9 @@ import androidx.core.content.ContextCompat;
 class Game extends SurfaceView implements SurfaceHolder.Callback {
     private GameLoop gameLoop;
     private Context context;
+    private Player mouse;
 
-    public Game(Context context) {
+    public Game(Context context, Player player) {
         super(context);
 
         //Get surface holder and add callback
@@ -32,6 +34,9 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         this.context = context;
         gameLoop = new GameLoop(this, surfaceHolder);
+
+        // Initialize the player (mouse)
+        mouse = player;
 
         setFocusable(true);
     }
@@ -55,6 +60,7 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         drawBackground(canvas);
+        drawPlayer(canvas, mouse);
     }
 
     public void drawBackground(Canvas canvas) {
@@ -63,7 +69,21 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
         Paint paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.background_color);
         paint.setColor(color);
-        canvas.drawBitmap(background,0,0,paint);
+        int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+        canvas.drawBitmap(Bitmap.createScaledBitmap(background, width, height, false),0,0,paint);
+    }
+
+    public void drawPlayer(Canvas canvas, Player player) {
+        // Convert the mouse PNG into a bitmap
+        Bitmap playerSprite = BitmapFactory.decodeResource(getResources(), R.drawable.char_1);
+        Paint paint = new Paint();
+        int color = ContextCompat.getColor(context, R.color.background_color);
+        paint.setColor(color);
+        //int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+        //int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+        //canvas.drawBitmap(Bitmap.createScaledBitmap(background, width, height, false),0,0,paint);
+        canvas.drawBitmap(playerSprite, 10,10,paint);
     }
 
 
@@ -78,5 +98,6 @@ class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     public void update() {
         // Update game state
+        mouse.update();
     }
 }

@@ -32,8 +32,13 @@ public class GameLoop extends Thread {
             // Try to update and render game
             try {
                 canvas = surfaceHolder.lockCanvas();
-                game.update();
-                game.drawBackground(canvas);
+
+                // Ensures multiple drawings don't update the canvas at different times
+                synchronized (surfaceHolder) {
+                    game.update();
+                    game.drawBackground(canvas);
+                }
+
                 surfaceHolder.unlockCanvasAndPost(canvas);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
