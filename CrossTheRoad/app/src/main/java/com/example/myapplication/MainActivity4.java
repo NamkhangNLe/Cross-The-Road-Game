@@ -83,24 +83,18 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     public void moveUp(View view) {
-        //Rotate the mouse.
         characterSprite.setRotation(0);
         if (mouse.getyPos() > 5 && mouse.getRiding() == false) {
             mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
-
             if (mouse.getLives() > 0) {
                 float xMove = characterSprite.getWidth();
                 characterSprite.setX(xMove * 5);
                 float yMove = characterSprite.getHeight();
                 characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
-
-                //Reset the mouse's position.
                 mouse.resetPosition();
                 characterSprite.setRotation(0);
-
-                //Reset the score to 0.
                 mouse.setScore(0);
                 TextView scoreDisplay = findViewById(R.id.scoreDisplay);
                 int score = mouse.getScore();
@@ -482,15 +476,6 @@ public class MainActivity4 extends AppCompatActivity {
             animation.setDuration(10000);
             animation.start();
             handler.postDelayed(riverOne, 3000);
-            float xDiff = characterSprite.getX() - log1.getTranslationX();
-            xDiff = Math.abs(xDiff);
-            Boolean bool = mouse.getRiding();
-            Log.d("App",bool.toString());
-            if (xDiff < (characterSprite.getHeight() * 2) && mouse.getyPos() == 7) {
-                mouse.setRiding(true);
-
-
-            }
         }
     };
 
