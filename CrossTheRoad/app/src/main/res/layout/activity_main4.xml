@@ -61,17 +61,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background" />
-
-
-    <ImageView
-        android:id="@+id/charSprite"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="580dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_dialog" />
     <Button
         android:id="@+id/up_button"
         android:layout_width="wrap_content"
@@ -116,6 +105,60 @@
         android:text="@string/LEFT"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/river_four"
+        android:layout_width="520dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="180dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/river_three"
+        android:layout_width="520dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="220dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/river_two"
+        android:layout_width="520dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/river_one"
+        android:layout_width="600dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/charSprite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="580dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <RelativeLayout
         android:id="@+id/road_one"
