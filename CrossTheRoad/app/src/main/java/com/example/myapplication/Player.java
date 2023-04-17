@@ -8,7 +8,7 @@ public class Player {
     private int score;
     private boolean[] rowHasBeenTraveledOn = new boolean[12];
     private boolean alive;
-
+    private boolean gameWin;
     private boolean riding;
     public boolean isAnimate = false;
     public float aX;
@@ -23,12 +23,21 @@ public class Player {
         yPos = 0;
         rowHasBeenTraveledOn[0] = true;
         this.alive = true;
+        this.gameWin = false;
     }
 
     public Player() {
         xPos = 5;
         yPos = 0;
         rowHasBeenTraveledOn[0] = true;
+    }
+    public boolean checkGameWin() {
+        if (yPos == 11) {
+            if (xPos == 1 || xPos == 3 || xPos == 5 || xPos == 7 || xPos == 9) {
+                return true;
+            }
+        }
+        return false;
     }
     public void moveUp() {
         if (yPos != 11) {
@@ -37,6 +46,8 @@ public class Player {
 
         this.updateScore();
     }
+    public void setGameWin(boolean gameWin) { this.gameWin = gameWin; }
+    public boolean isGameWin() { return this.gameWin; }
     public void moveDown() {
         if (yPos != 0) {
             yPos = yPos - 1;
