@@ -84,7 +84,12 @@ public class MainActivity4 extends AppCompatActivity {
 
     public void moveUp(View view) {
         characterSprite.setRotation(0);
-        if (mouse.getyPos() > 5 && mouse.getRiding() == false) {
+        if (mouse.getyPos() != 11) {
+            float move = characterSprite.getHeight();
+            characterSprite.setY(characterSprite.getY() - move);
+            mouse.moveUp();
+        }
+        if (mouse.getyPos() > 6 && mouse.getRiding() == false) {
             mouse.touchedWater();
             TextView livesDisplay = findViewById(R.id.livesDisplay);
             livesDisplay.setText(Integer.toString(mouse.getLives()));
@@ -105,13 +110,6 @@ public class MainActivity4 extends AppCompatActivity {
                 finish();
             }
         }
-        if (mouse.getyPos() != 11) {
-            float move = characterSprite.getHeight();
-            characterSprite.setY(characterSprite.getY() - move);
-            mouse.moveUp();
-            mouse.setRiding(false);
-        }
-
         TextView scoreDisplay = findViewById(R.id.scoreDisplay);
         scoreDisplay.setText(Integer.toString(mouse.getScore()));
     }
@@ -481,10 +479,16 @@ public class MainActivity4 extends AppCompatActivity {
             characterSprite.getDrawingRect(rc1);
             Rect rc2 = new Rect();
             view.getDrawingRect(rc2);
+            if (log1.getX() == characterSprite.getX()) {
+                mouse.setRiding(true);
+            }
 
-            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 6) {
+            if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 7) {
                 //Remove a life.
                 mouse.setRiding(true);
+                ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(characterSprite, "translationX", 2000f);
+                playerAnimation.setDuration(10000);
+                playerAnimation.start();
             }
         }
     };
