@@ -3,6 +3,7 @@ package com.example.myapplication;
 //import android.animation.ValueAnimator;
 //import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -120,6 +121,7 @@ public class MainActivity4 extends AppCompatActivity {
                 mouse.resetScoreIncrement();
                 return;
             } else {
+                mouse.resetPosition();
                 finish();
             }
         }
@@ -129,11 +131,7 @@ public class MainActivity4 extends AppCompatActivity {
 
     public void moveDown(View view) {
         if (mouse.isAnimate) {
-            characterSprite = findViewById(R.id.charSprite);
-            characterSprite.setImageDrawable(correctSprite);
-            characterSprite.setX(mouse.aX);
-            characterSprite.setY(mouse.aY);
-            mouse.isAnimate = false;
+            characterSprite.clearAnimation();
         }
         //Rotate the mouse.
         characterSprite.setRotation(180);
@@ -512,13 +510,6 @@ public class MainActivity4 extends AppCompatActivity {
             characterSprite.getDrawingRect(rc1);
             Rect rc2 = new Rect();
             view.getDrawingRect(rc2);
-            /*
-            if (log1.getX() == characterSprite.getX()) {
-                mouse.setRiding(true);
-            }
-            *
-             */
-
             if (Rect.intersects(rc1, rc2) && mouse.getyPos() == 7) {
                 //Remove a life.
                 mouse.setRiding(true);
@@ -527,10 +518,38 @@ public class MainActivity4 extends AppCompatActivity {
                 playerAnimation.setDuration(10000);
                 playerAnimation.setInterpolator(new LinearInterpolator());
                 playerAnimation.start();
+            } else if (mouse.getyPos() == 7){
+                mouse.setRiding(false);
             }
             if (mouse.getyPos() != 7) {
                 mouse.aX = characterSprite.getX();
                 mouse.aY = characterSprite.getY();
+            }
+            int[] location = new int[2];
+            characterSprite.getLocationOnScreen(location);
+            int x = location[0];
+            Log.d("myTag", String.valueOf(x));
+            if (x >= 1300) {
+                if (mouse.getLives() > 1) {
+                    float xMove = characterSprite.getWidth();
+                    characterSprite.setX(xMove * 5);
+                    float yMove = characterSprite.getHeight();
+                    characterSprite.setY(characterSprite.getY() + yMove * mouse.getyPos());
+                    mouse.removeLife();
+                    TextView livesDisplay = findViewById(R.id.livesDisplay);
+                    livesDisplay.setText(Integer.toString(mouse.getLives()));
+                    mouse.resetPosition();
+                    characterSprite.setRotation(0);
+                    //Reset the score to 0.
+                    mouse.setScore(0);
+                    TextView scoreDisplay = findViewById(R.id.scoreDisplay);
+                    int score = mouse.getScore();
+                    scoreDisplay.setText(Integer.toString(score));
+                    mouse.resetScoreIncrement();
+                } else {
+                    handler.removeCallbacks(riverOne);
+                    finish();
+                }
             }
         }
     };
