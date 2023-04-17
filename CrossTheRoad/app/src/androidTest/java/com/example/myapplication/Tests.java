@@ -642,4 +642,5 @@ public class Tests {
         player.moveUp();
         assertEquals(player.getScore(), 370);
     }
+
 }
