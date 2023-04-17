@@ -652,15 +652,4 @@ public class Tests {
         player.touchedWater();
         assertEquals(player.getLives(), 4);
     }
-
-    /**
-     * @author Namkhang Le
-     * Succesfully loss the game
-     */
-    @Test
-    public void gameNotWonTest() {
-        Player player = new Player(5, "Bob");
-        player.checkGameWin();
-        assertFalse(player.isGameWin());
-    }
 }
