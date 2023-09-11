@@ -1,7 +1,5 @@
 # Ratatouille Crossy Road Game
 
-![Ratatouille Crossy Road Banner](link_to_banner_image)
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -33,20 +31,6 @@ In this Ratatouille-themed Crossy Road game, players control Remy the rat as he 
 - **Endless Gameplay**: Enjoy an endless, procedurally generated world with increasing difficulty.
 
 - **Obstacles and Challenges**: Navigate through busy streets, rivers, and kitchens while avoiding obstacles like cars, chefs, and more.
-
-- **Leaderboards**: Compete with friends and players worldwide to achieve the highest scores.
-
-- **Achievements**: Unlock achievements as you progress through the game and accomplish unique challenges.
-
-- **Power-Ups**: Discover power-ups and special items to help Remy on his culinary journey.
-
-- **In-App Purchases**: Enhance your gameplay with optional in-app purchases for power-ups and character customization.
-
-## Screenshots
-
-![Screenshot 1](link_to_screenshot_1)
-![Screenshot 2](link_to_screenshot_2)
-![Screenshot 3](link_to_screenshot_3)
 
 ## Getting Started
 
