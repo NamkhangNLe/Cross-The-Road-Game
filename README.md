@@ -45,7 +45,7 @@ Before you begin, ensure you have the following:
 
 1. Clone the repository to your local machine:
    ```
-   git clone https://github.com/yourusername/ratatouille-crossy-road.git
+   git clone https://github.com/NamkhangNLe/ratatouille-crossy-road.git
    ```
 
 2. Open the project in Android Studio.
